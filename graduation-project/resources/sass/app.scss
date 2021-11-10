@@ -1,0 +1,274 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+
+// styles
+body {
+    min-height: 100vh;
+}
+
+.logo {
+    padding-top: 5px;
+}
+
+.navbar {
+    z-index: 10 !important;
+}
+
+.content {
+    min-height: calc(100vh - 110px);
+}
+
+.search-input {
+    width: 540px !important;
+}
+
+// carousel
+.carousel-img {
+    height: 500px;
+}
+
+.carousel {
+    position: relative;
+}
+
+.caption {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.caption p {
+    font-size: 2rem;
+}
+
+.carousel-item::before {
+    content: "";
+    background-color: rgba(0, 0, 0, 0.3);
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+.underline {
+    border-bottom: 3px solid #38c172;
+    height: 20px;
+    width: 250px;
+    margin: 0 auto;
+}
+
+// departments
+.department-info {
+    display: flex;
+}
+
+.department-info img {
+    width: 200px !important;
+    object-fit: contain;
+}
+
+.social a:hover {
+    color: #38c172 !important;
+}
+
+.social-links {
+    display: none !important;
+}
+
+.form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+// blog
+.left-border {
+    border-left: 2px solid #000;
+    display: block;
+}
+
+.left-border {
+    border-left: 2px solid rgba(0, 0, 0, 0.5);
+    display: block;
+}
+
+// library
+.book-cover {
+    width: 200px;
+    height: 250px;
+}
+
+.books {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.book {
+    margin: 10px;
+}
+
+// dashboard
+.toggle {
+    font-size: 1.3rem;
+}
+
+.sidebar {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100px;
+    height: 100%;
+    overflow: hidden;
+    transition: width 0.2s ease-in;
+}
+
+.sidebar.active {
+    width: 235px;
+}
+
+.narrow-side-navigation {
+    display: none !important;
+}
+
+.narrow-side-navigation.active {
+    display: flex !important;
+}
+
+.narrow-side-navigation a:hover {
+    color: #38c172 !important;
+}
+
+#sideNavigation {
+    display: none;
+}
+
+#sideNavigation.active {
+    display: block;
+}
+
+.blog-icon {
+    font-size: 2.2rem;
+}
+
+.overflow {
+    overflow: auto;
+}
+.main-content {
+    position: absolute;
+    overflow-y: auto;
+    left: 250px;
+    right: 0;
+    top: 55px;
+    padding: 20px;
+}
+
+.main-content.wide {
+    left: 100px !important;
+}
+
+.links a {
+    font-size: 1.1rem;
+    // animation-name: extendSidebar;
+    // animation-duration: 4s;
+}
+
+.links a:hover {
+    text-decoration: none;
+    color: #38c172 !important;
+}
+
+body,
+html,
+.main-content {
+    height: 100%;
+}
+.body {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: block;
+}
+
+// scroll bar
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    display: none;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 15px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+@media (max-width: 500px) {
+    .content {
+        min-height: calc(100vh - 149px);
+    }
+
+    .search-input {
+        width: 340px !important;
+    }
+
+    .carousel-img {
+        height: 400px;
+    }
+
+    .caption p {
+        font-size: 1.2rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+    .department-info {
+        display: block;
+    }
+
+    .department-info img {
+        display: block;
+    }
+
+    .department-info p {
+        display: none;
+    }
+
+    .social {
+        display: none;
+    }
+
+    .social-links {
+        display: flex !important;
+    }
+}
+
+// @keyframes extendSidebar {
+//     from {
+//         opacity: 0;
+//     }
+
+//     to {
+//         opacity: 1;
+//     }
+// }
