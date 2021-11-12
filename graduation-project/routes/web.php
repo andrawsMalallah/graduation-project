@@ -11,6 +11,11 @@ use App\Http\Controllers\SlidersController;
 use App\Http\Controllers\TeachersController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+//
+//
+use App\Http\Controllers\ContactUsFormController;
+//
+//
 
 /*
 |--------------------------------------------------------------------------
@@ -28,11 +33,15 @@ Route::get('/', function () {
     return view('frontend.welcome');
 });
 
+Route::post('/contactus', [ContactUsFormController::class, 'ContactUsForm'])->name('contact.store');
+
 Auth::routes();
 
 Route::get('/contact', [ContactController::class, 'index'])->name('contact');
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::get('/library', [LibraryController::class, 'index'])->name('library');
+
+
 
 // dashboard routes
 Route::prefix('dashboard')->middleware('admin')->group(function () {
