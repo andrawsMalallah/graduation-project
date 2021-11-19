@@ -8,6 +8,10 @@
     </a>
 </div>
 
+@error('image')
+<p class="text-center p-2 text-white error">{{ $message }}</p>
+@enderror
+
 <table class="table">
     <thead>
         <tr>
@@ -16,14 +20,21 @@
         </tr>
     </thead>
     <tbody>
+        @foreach ($sliders as $slider)
         <tr>
-            <td></td>
             <td>
-                <button class="btn btn-sm btn-primary">View</button>
-                <button class="btn btn-sm btn-secondary">Edit</button>
-                <button class="btn btn-sm btn-danger">Delete</button>
+                <img src="{{ asset($slider->image) }}" alt="Slide" class="slider">
+            </td>
+            <td>
+                <a href="{{ route('slider.show', $slider->id) }}" class="btn btn-sm btn-primary">View</a>
+                <form action="{{ route('sliders.delete', $slider->id) }}" method="post" class="d-inline-block">
+                    @method('DELETE')
+                    @csrf
+                    <button class="btn btn-sm btn-danger">Delete</button>
+                </form>
             </td>
         </tr>
+        @endforeach
     </tbody>
 </table>
 
@@ -37,20 +48,27 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="input-group my-3">
-                    <div class="custom-file">
-                        <input type="file" name="img" class="custom-file-input" id="inputGroupFile01"
-                            aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+            <form action="{{ route('sliders.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="input-group mb-3">
+                        <div class="custom-file">
+                            <input type="file" name="image" class="custom-file-input" id="inputGroupFile02">
+                            <label class="custom-file-label" for="inputGroupFile02"
+                                aria-describedby="inputGroupFileAddon02">Choose
+                                file</label>
+                                
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Add</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Add</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
+
 @endsection

@@ -10,17 +10,25 @@
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
+            <th scope="col">Role</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td></td>
-            <td></td>
-            <td>
-                <button class="btn btn-sm btn-danger">Delete</button>
-            </td>
-        </tr>
+        @foreach ($users as $user)
+            <tr>
+                <td>{{ $user->name }}</td>
+                <td>{{ $user->email }}</td>
+                <td><span class="{{ $user->admin ? 'text-primary font-weight-bold' : ''}}">{{ $user->admin ? 'Admin' : 'User' }}</span></td>
+                <td>
+                    <form action="{{ route('user.delete', $user->id) }}" method="POST" class="d-inline-block">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        @endforeach
     </tbody>
 </table>
 

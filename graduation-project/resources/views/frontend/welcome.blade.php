@@ -3,12 +3,11 @@
 @section('content')
 <div id="carousel" class="carousel slide" data-ride="carousel">
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img src="{{ asset('images/carousel/carousel1.jpg') }}" class="d-block w-100 carousel-img" alt="...">
-        </div>
-        <div class="carousel-item">
-            <img src="{{ asset('images/carousel/carousel2.jpg') }}" class="d-block w-100 carousel-img" alt="...">
-        </div>
+        @foreach ($sliders as $index => $slider)
+            <div class="carousel-item {{ $index == 0 ? 'active' : ''}}">
+                <img src="{{ asset($slider->image) }}" class="d-block w-100 carousel-img" alt="...">
+            </div>
+        @endforeach
     </div>
     <button class="carousel-control-prev" type="button" data-target="#carousel" data-slide="prev">
         <span class="carousel-control-prev-icon" aria-hidden="true"></span>

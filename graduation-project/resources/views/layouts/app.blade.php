@@ -20,133 +20,187 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/reset-navbar.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style-navbar.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/ionicon-navbar.min.css') }}">
+
         <!-- Font Awesome  -->
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
             integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
             crossorigin="anonymous" />
+
+            {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+                         alpha/css/bootstrap.css" rel="stylesheet"> --}}
+            
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            
+            <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+            
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
+        <style>
+            .header .menu>.menu-item>.sub-menu {
+                border-top: 3px solid #3490dc;
+            }
+
+            .header .menu>.menu-item:hover>a {
+                color: #3490dc;
+            }
+
+            :root {
+
+                --color-pink: #3490dc;
+            }
+        </style>
     </head>
 
     <body>
         <div id="app">
-            <nav class="navbar navbar-expand-md navbar-light bg-dark shadow-sm">
-                <div class="container">
-                    <a class="navbar-brand text-success logo" href="{{ url('/') }}">
-                        EETC
-                    </a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse"
-                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                        <i class="fas fa-bars text-white"></i>
-                    </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <!-- Left Side Of Navbar -->
-                        <ul class="navbar-nav mr-auto">
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="{{ route('library') }}">Library</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="{{ route('blog') }}">Blog</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="#">About</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link text-light" href="{{ route('contact') }}">Contact</a>
-                            </li>
-                        </ul>
+            <!-- Section: Header -->
+            <header class="header">
+                <section class="container">
+                    <div class="wrapper" style="height: 89px">
+                        <a href="/">
+                            <img src="{{ asset('images/logo-edited.jpg') }}" style="height: 85px ;" class="brand">
+                        </a>
+                        <!-- <li class="menu-item" ><a href="#">Home</a></li> -->
 
-                        <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#"
-                                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                                    v-pre>
-                                    @guest
-                                    <i class="fas fa-user"></i>
-                                    @endguest
+                        <button type="button" class="burger-menu" id="burger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                        <div class="overlay" id="overlay">
+                        </div>
+                        <nav class="navbar" id="navbar">
+                            <ul class="menu" style="height: 48px;">
+                                @guest
+                                <li class="menu-item menu-item-child">
+                                    <a href="#" data-toggle="sub-menu">Join<i class="expand"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="{{ route('login') }}">Login</a></li>
+                                        <li class="menu-item"><a href="{{ route('register') }}">Register</a></li>
+                                    </ul>
+                                </li>
+                                @endguest
+                                @auth
+                                <li class="menu-item menu-item-child">
+                                    <a href="#" data-toggle="sub-menu">{{ Auth::user()->name }}<i
+                                            class="expand"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">Logout</a>
 
-                                    @auth
-                                    <h6 class="d-inline">{{ Auth::user()->name }}</h6>
-                                    @endauth
-                                </a>
-
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    @guest
-                                    <a class="dropdown-item" href="{{ route('login') }}">
-                                        Login
-                                    </a>
-                                    <a class="dropdown-item" href="{{ route('register') }}">
-                                        Register
-                                    </a>
-                                    @endguest
-
-                                    @auth
-                                    @if (Auth::user()->admin)
-                                    <a href="{{ route('dashboard') }}" class="dropdown-item">Dashboard</a>
-                                    @endif
-                                    <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                        document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                        @csrf
-                                    </form>
-                                    @endauth
-                                </div>
-
-                            </li>
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link text-white" href="#" role="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    <i class="fas fa-search"></i>
-                                </a>
-                                <div class="dropdown-menu dropdown-menu-right px-2 search-input"
-                                    aria-labelledby="navbarDropdown">
-
-                                    <input class="form-control" type="search" placeholder="Search..."
-                                        aria-label="Search">
-
-                                </div>
-                            </li>
-                        </ul>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                        @if(Auth::user()->admin)
+                                        <li class="menu-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                        @endif
+                                    </ul>
+                                </li>
+                                @endauth
+                                <li class="menu-item menu-item-child">
+                                    <a href="#" data-toggle="sub-menu">Scientific Departments<i class="expand"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="#">Computer Technology Engineering</a></li>
+                                        <li class="menu-item"><a href="#">Medical Instrumentation Engineering
+                                                Techniques</a></li>
+                                        <li class="menu-item"><a href="#">Electrical Power Technologies Engineering</a>
+                                        </li>
+                                        <li class="menu-item"><a href="#">Control And Automation Technologies
+                                                Engineering</a></li>
+                                    </ul>
+                                </li>
+                                <li class="menu-item"><a href="{{ route('blog') }}">Blog</a></li>
+                                <li class="menu-item"><a href="{{ route('about') }}">About</a></li>
+                                <li class="menu-item"><a href="{{ route('contact') }}">Contact Us</a></li>
+                                
+                                <li class="menu-item menu-item-child">
+                                    <a href="#" data-toggle="sub-menu">Search</a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item">
+                                            <form action="">
+                                                <input type="text" name="search" class="form-control my-2 mx-auto" placeholder="Search..." style="width: 195px">
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
-                </div>
-            </nav>
+                </section>
+            </header>
 
             <main class="content">
                 @yield('content')
             </main>
 
-            <footer>
-                <div class="bg-dark p-2">
+            <footer class="shadow-lg">
+                <div class="bg-white p-2">
                     <div class="container">
                         <div class="d-flex justify-content-between">
 
-                            <a href="#" class="navbar-brand text-success">EETC</a>
-                            <a class="text-white navbar-brand">
+                            <a href="/" class="navbar-brand text-primary font-weight-bold">EETC</a>
+                            <a class="text-dark navbar-brand">
                                 &copy; All Rights Reserved | {{ date('Y') }}
                             </a>
 
                             <div class="social">
-                                <a href="#" class="text-white navbar-brand"><i class="fab fa-facebook"></i></a>
-                                <a href="#" class="text-white navbar-brand"><i class="fab fa-youtube"></i></a>
-                                <a href="#" class="text-white navbar-brand"><i class="fab fa-linkedin"></i></a>
+                                <a href="#" class="text-dark navbar-brand"><i class="fab fa-facebook"></i></a>
+                                <a href="#" class="text-dark navbar-brand"><i class="fab fa-youtube"></i></a>
+                                <a href="#" class="text-dark navbar-brand"><i class="fab fa-linkedin"></i></a>
                             </div>
 
                         </div>
 
                         <div class="d-flex justify-content-center social-links">
-                            <a href="#" class="text-white navbar-brand"><i class="fab fa-facebook"></i></a>
-                            <a href="#" class="text-white navbar-brand"><i class="fab fa-youtube"></i></a>
-                            <a href="#" class="text-white navbar-brand"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="text-dark navbar-brand"><i class="fab fa-facebook"></i></a>
+                            <a href="#" class="text-dark navbar-brand"><i class="fab fa-youtube"></i></a>
+                            <a href="#" class="text-dark navbar-brand"><i class="fab fa-linkedin"></i></a>
                         </div>
                     </div>
                 </div>
             </footer>
         </div>
-
+        <script defer src="{{ asset('js/script-navbar.js') }}"></script>
+        <script>
+            @if(Session::has('message'))
+                  toastr.options =
+                  {
+                  	"closeButton" : true,
+                  }
+                  		toastr.success("{{ session('message') }}");
+                  @endif
+                
+                  @if(Session::has('error'))
+                  toastr.options =
+                  {
+                  	"closeButton" : true,
+                  }
+                  		toastr.error("{{ session('error') }}");
+                  @endif
+                
+                  @if(Session::has('info'))
+                  toastr.options =
+                  {
+                  	"closeButton" : true,
+                  }
+                  		toastr.info("{{ session('info') }}");
+                  @endif
+                
+                  @if(Session::has('warning'))
+                  toastr.options =
+                  {
+                  	"closeButton" : true,
+                  }
+                  		toastr.warning("{{ session('warning') }}");
+                  @endif
+        </script>
         @yield('script')
     </body>
 

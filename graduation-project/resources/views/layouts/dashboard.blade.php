@@ -12,7 +12,6 @@
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        <script src="{{ asset('js/dashboard.js') }}" defer></script>
 
         <!-- Fonts -->
         <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,165 +20,140 @@
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/reset-navbar.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/style-navbar.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/ionicon-navbar.min.css') }}">
+        
+        {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
+             alpha/css/bootstrap.css" rel="stylesheet"> --}}
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
         <!-- Font Awesome  -->
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
             integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
             crossorigin="anonymous" />
+
+        <style>
+            .header .menu>.menu-item>.sub-menu {
+                border-top: 3px solid #3490dc;
+            }
+
+            .header .menu>.menu-item:hover>a {
+                color: #3490dc;
+            }
+
+            :root {
+
+                --color-pink: #3490dc;
+            }
+        </style>
     </head>
 
-    <body class="body">
+    <body>
         <div id="app">
-            <nav class="position-fixed fixed-top navbar navbar-expand-md navbar-light bg-dark shadow-sm">
-                <div class="d-flex justify-content-between w-100" style="padding-left: 32px">
-                    <div class="d-flex align-items-baseline">
-                        <a id="sidebarToggle" class="text-white pr-3 pt-2 toggle" href="#"><i
-                                class="fa fa-bars"></i></a>
-                        <a class="navbar-brand text-success" style="font-size: 1.5rem" href="/">EETC</a>
-                    </div>
 
-                    <ul class="navbar-nav ml-auto" style="padding-right: 32px; padding-top: 7px">
-                        <li class="nav-item dropdown">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle text-white" href="#" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                @guest
-                                <i class="fas fa-user"></i>
-                                @endguest
+            <!-- Section: Header -->
+            <header class="header">
+                <section class="container">
+                    <div class="wrapper" style="height: 89px">
+                        <a href="/">
+                            <img src="{{ asset('images/logo-edited.jpg') }}" style="height: 85px ;" class="brand">
+                        </a>
+                        <!-- <li class="menu-item" ><a href="#">Home</a></li> -->
 
+                        <button type="button" class="burger-menu" id="burger">
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>
+                        </button>
+                        <div class="overlay" id="overlay">
+                        </div>
+                        <nav class="navbar" id="navbar">
+                            <ul class="menu" style="height: 48px;">
                                 @auth
-                                <h6 class="d-inline">{{ Auth::user()->name }}</h6>
+                                <li class="menu-item menu-item-child">
+                                    <a href="#" data-toggle="sub-menu">{{ Auth::user()->name }}<i
+                                            class="expand"></i></a>
+                                    <ul class="sub-menu">
+                                        <li class="menu-item"><a href="{{ route('logout') }}" onclick="event.preventDefault();
+                                                document.getElementById('logout-form').submit();">Logout</a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                        <li class="menu-item"><a href="{{ route('dashboard') }}">Dashboard</a>
+                                        </li>
+                                    </ul>
+                                </li>
                                 @endauth
-                            </a>
-
-
-
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                @guest
-                                <a class="dropdown-item" href="{{ route('login') }}">
-                                    Login
-                                </a>
-                                <a class="dropdown-item" href="{{ route('register') }}">
-                                    Register
-                                </a>
-                                @endguest
-
-                                @auth
-                                <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                        document.getElementById('logout-form').submit();">
-                                    {{ __('Logout') }}
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                    @csrf
-                                </form>
-                                @endauth
-                            </div>
-
-                        </li>
-                    </ul>
-                </div>
-            </nav>
-
-            <div class="sidebar active bg-dark text-white p-5 shadow-sm">
-                <div id="sideNavigation" class="active">
-                    <h3>
-                        <a href="{{ route('dashboard') }}" class="text-white text-decoration-none">Dashboard</a>
-                    </h3>
-                    <hr class="bg-white">
-
-                    <div class="links pt-3">
-                        <ul class="list-unstyled">
-                            <li>
-                                <a title="Sliders" class="text-white d-block pb-3"
-                                    href="{{ route('sliders') }}">
-                                    <i class="far fa-images pr-2"></i>Sliders
-                                </a>
-                            </li>
-                            <li>
-                                <a title="Departments" class="text-white d-block pb-3"
-                                    href="{{ route('departments') }}">
-                                    <i class="fas fa-building pr-2"></i>Departments
-                                </a>
-                            </li>
-                            <li>
-                                <a title="Departments" class="text-white d-block pb-3" href="{{ route('labs') }}">
-                                    <i class="fad fa-users-class pr-2"></i>Labs
-                                </a>
-                            </li>
-                            <li>
-                                <a title="Teachers" class="text-white d-block pb-3" href="{{ route('teachers') }}">
-                                    <i class="fad fa-chalkboard-teacher pr-2"></i>Teachers
-                                </a>
-                            </li>
-
-                            <li>
-                                <a title="Library" class="text-white d-block pb-3"
-                                    href="{{ route('dashboard.library') }}"><i class="fas fa-book-open pr-2"></i>Library
-                                </a>
-                            </li>
-
-                            <li>
-                                <a title="Blog" class="text-white d-block pb-3" href="{{ route('dashboard.blog') }}"><i
-                                        class="fas fa-blog pr-2"></i>Blog
-                                </a>
-                            </li>
-                            <li>
-                                <a title="Users" class="text-white d-block pb-3"
-                                    href="{{ route('dashboard.users') }}"><i class="fa fa-users pr-2"></i>Users
-                                </a>
-                            </li>
-                        </ul>
-
-
-
-
+                                <li class="menu-item"><a href="{{ route('sliders') }}">Sliders</a></li>
+                                <li class="menu-item"><a href="{{ route('departments') }}">Departments</a></li>
+                                <li class="menu-item"><a href="{{ route('labs') }}">Labs</a></li>
+                                <li class="menu-item"><a href="{{ route('teachers') }}">Teachers</a></li>
+                                <li class="menu-item"><a href="{{ route('dashboard.library') }}">Library</a></li>
+                                <li class="menu-item"><a href="{{ route('dashboard.blog') }}">Blog</a></li>
+                                <li class="menu-item"><a href="{{ route('messages') }}">Messages</a></li>
+                                <li class="menu-item"><a href="{{ route('dashboard.users') }}">Users</a></li>
+                            </ul>
+                        </nav>
                     </div>
-                </div>
+                </section>
+            </header>
 
-
-                <div class="narrow-side-navigation d-flex flex-column justify-content-center align-items-center h-100"
-                    id="narrowNav">
-
-                    <ul class="list-unstyled">
-                        <li class="mb-2">
-                            <a title="Sliders" class="text-white pb-3 mx-auto" href="{{ route('sliders') }}">
-                                <i class="far fa-images fa-2x pr-2"></i>
-                            </a>
-                        </li>
-                        <li class="mb-2">
-                            <a title="Departments" class="text-white pb-3 mx-auto" href="{{ route('departments') }}"><i
-                                    class="fas fa-building fa-2x pr-2"></i></a>
-                        </li>
-                        <li class="mb-2">
-                            <a title="Labs" class="text-white pb-3 mx-auto" href="{{ route('labs') }}"><i
-                                    class="fad fa-users-class fa-2x pr-2"></i></a>
-                        </li>
-                        <li class="mb-2">
-                            <a title="Labs" class="text-white pb-3 mx-auto" href="{{ route('teachers') }}"><i
-                                    class="fad fa-chalkboard-teacher fa-2x pr-2"></i></a>
-                        </li>
-                        <li class="mb-2">
-                            <a title="Library" class="text-white pb-3 mx-auto"
-                                href="{{ route('dashboard.library') }}"><i class="fas fa-book-open fa-2x pr-2"></i></a>
-                        </li>
-                        <li class="mb-2">
-                            <a title="Blog" class="text-white fa-2x pb-3 mx-auto"
-                                href="{{ route('dashboard.blog') }}"><i class="fas fa-blog pr-2 blog-icon"></i></a>
-                        </li>
-                        <li class="mb-2">
-                            <a title="Users" class="text-white pb-3 mx-auto" href="{{ route('dashboard.users') }}"><i
-                                    class="fa fa-users fa-2x pr-2"></i></a>
-                        </li>
-                    </ul>
-
-
-                </div>
-            </div>
-
-            <main class="main-content" id="mainContent">
+            <main class="content container">
                 @yield('content')
             </main>
 
         </div>
+        <script defer src="{{ asset('js/script-navbar.js') }}"></script>
+        <script>
+            @if(Session::has('message'))
+          toastr.options =
+          {
+          	"closeButton" : true,
+          }
+          		toastr.success("{{ session('message') }}");
+          @endif
+        
+          @if(Session::has('error'))
+          toastr.options =
+          {
+          	"closeButton" : true,
+          }
+          		toastr.error("{{ session('error') }}");
+          @endif
+        
+          @if(Session::has('info'))
+          toastr.options =
+          {
+          	"closeButton" : true,
+          }
+          		toastr.info("{{ session('info') }}");
+          @endif
+        
+          @if(Session::has('warning'))
+          toastr.options =
+          {
+          	"closeButton" : true,
+          }
+          		toastr.warning("{{ session('warning') }}");
+          @endif
+        </script>
+
+        <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+        <script>
+            if (document.getElementById('my-editor')) {
+                CKEDITOR.replace('my-editor');
+            }
+        </script>
 
         @yield('script')
     </body>

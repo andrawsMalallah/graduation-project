@@ -11,21 +11,25 @@
 <table class="table">
     <thead>
         <tr>
-            <th scope="col">Image</th>
             <th scope="col">Name</th>
-            <th scope="col">Description</th>
+            <th scope="col">Department</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>
-                <button class="btn btn-sm btn-secondary">Edit</button>
-                <button class="btn btn-sm btn-danger">Delete</button>
-            </td>
+            @foreach ($labs as $lab)
+                <td>{{ $lab->name }}</td>
+                <td>{{ $lab->department->name }}</td>
+                <td>
+                    <a href="{{ route('lab.edit', $lab->id) }}" class="mb-1 btn btn-sm btn-secondary">Edit</a>
+                    <form action="{{ route('lab.delete', $lab->id) }}" method="post" class="d-inline-block">
+                        @method('DELETE')
+                        @csrf
+                        <button class="btn btn-sm btn-danger mb-1">Delete</button>
+                    </form>
+                </td>
+            @endforeach
         </tr>
     </tbody>
 </table>
@@ -40,46 +44,51 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <div class="modal-body">
-                <div class="form-group">
-                    <label class="col-form-label text-md-right">Name</label>
-                    <div class="row">
-                        <input class="form-control mx-3" />
+            <form action="{{ route('lab.store') }}" method="post" enctype="multipart/form-data">
+                @csrf
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label class="col-form-label text-md-right">Name</label>
+                        <div class="row">
+                            <input class="form-control mx-3" name="name" required />
+                        </div>
+                    </div>
+
+                    <select class="custom-select" name="department" required>
+                        <option selected disabled>Select The Department</option>
+                        @foreach ($departments as $department)
+                            <option value="{{ $department->id }}">{{ $department->name }}</option>
+                        @endforeach
+                    </select>
+
+                    <div class="input-group mt-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                aria-describedby="inputGroupFileAddon01" name="image" required>
+                            <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                        </div>
+                    </div>
+
+                    <div class="input-group mt-3">
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="inputGroupFile01"
+                                aria-describedby="inputGroupFileAddon01" name="video">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose Video</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-form-label text-md-right">Description</label>
+                        <div class="">
+                            <textarea class="form-control" id="my-editor" name="description" required></textarea>
+                        </div>
                     </div>
                 </div>
-
-                <select class="custom-select">
-                    <option selected disabled>Select Department</option>
-                    <option value="scientific">Scientific</option>
-                    <option value="management">management</option>
-                </select>
-
-                <div class="input-group my-3">
-                    <div class="custom-file">
-                        <input type="file" name="img" class="custom-file-input" id="inputGroupFile01"
-                            aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
-                    </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-success">Add</button>
                 </div>
-
-                <div class="input-group mb-3">
-                    <div class="custom-file">
-                        <input type="file" name="video" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="inputGroupFile01">Choose Video</label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="col-form-label text-md-right">Description</label>
-                    <div class="">
-                        <textarea class="form-control" rows="3" name="desc"></textarea>
-                    </div>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-success">Add</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>
