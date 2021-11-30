@@ -51,6 +51,13 @@
 
                 --color-pink: #3490dc;
             }
+            
+            @media screen and (max-width: 540px) {
+                .header .menu>.menu-item>.sub-menu {
+                border-top: none;
+            }
+}
+            
         </style>
     </head>
 
@@ -76,7 +83,7 @@
                         </div>
                         <nav class="navbar" id="navbar">
                             <ul class="menu" style='height: 48px; font-family: "Segoe UI",Tahoma,Geneva,Verdana,sans-serif;'>
-                                @guest
+                                <!-- @guest
                                 <li class="menu-item menu-item-child">
                                     <a href="#" data-toggle="sub-menu" style="text-decoration: none;" >Join<i class="expand"></i></a>
                                     <ul class="sub-menu">
@@ -103,7 +110,7 @@
                                         @endif
                                     </ul>
                                 </li>
-                                @endauth
+                                @endauth -->
                                 <li class="menu-item menu-item-child">
                                     <a style="text-decoration: none;" href="#" data-toggle="sub-menu">Scientific Departments<i class="expand"></i></a>
                                     <ul class="sub-menu">
@@ -119,7 +126,7 @@
                                 <li class="menu-item menu-item-child">
                                     <a style="text-decoration: none;" href="#" data-toggle="sub-menu">Centers & Units<i class="expand"></i></a>
                                     <ul class="sub-menu">
-                                        <li class="menu-item"><a style="text-decoration: none;" href="#">Computer & Internet Center</a></li>
+                                        <li class="menu-item"><a style="text-decoration: none;" href="#">Computer Center</a></li>
                                         <li class="menu-item"><a style="text-decoration: none;" href="#">Media Unit</a></li>
                                         <li class="menu-item"><a style="text-decoration: none;" href="#">Scientific Unit</a>
                                         </li>
@@ -134,7 +141,10 @@
                                 <li class="menu-item"><a style="text-decoration: none;" href="{{ route('contact') }}">Contact Us</a></li>
                                 
                                 <li class="menu-item menu-item-child">
-                                    <a style="text-decoration: none;" href="#" data-toggle="sub-menu">Search</a>
+                                    <!-- <a style="text-decoration: none;" href="#" data-toggle="sub-menu" >Search</a> -->
+                                    <a href="#" data-toggle="sub-menu" class="menu-icon"><svg width="16" height="18" fill="currentColor" >
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+</svg></i></a>
                                     <ul class="sub-menu">
                                         <li class="menu-item">
                                             <form action="">
