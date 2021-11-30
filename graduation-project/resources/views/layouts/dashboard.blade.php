@@ -58,7 +58,7 @@
         <div id="app">
 
             <!-- Section: Header -->
-            <header class="header">
+            <header class="header" >
                 <section class="container">
                     <div class="wrapper" style="height: 89px">
                         <a href="/">
@@ -74,7 +74,7 @@
                         </button>
                         <div class="overlay" id="overlay">
                         </div>
-                        <nav class="navbar" id="navbar">
+                        <nav class="navbar" id="navbar" style="text-decoration: none;">
                             <ul class="menu" style="height: 48px;">
                                 @auth
                                 <li class="menu-item menu-item-child">
