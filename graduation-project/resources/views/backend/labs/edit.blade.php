@@ -13,15 +13,22 @@
             <div class="row">
                 <input class="form-control mx-3" name="name" required value="{{ $lab->name }}" />
             </div>
+            @error('name')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
 
         <div class="form-group">
             <label class="col-form-label text-md-right">Department</label>
             <select class="custom-select" name="department">
                 @foreach ($departments as $department)
-                    <option value="{{ $department->id }}" {{ $department->id == $lab->department_id ? 'selected' : '' }}>{{ $department->name }}</option>
+                <option value="{{ $department->id }}" {{ $department->id == $lab->department_id ? 'selected' : '' }}>{{
+                    $department->name }}</option>
                 @endforeach
             </select>
+            @error('department')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
 
         <label class="col-form-label text-md-right">Image</label>
@@ -31,30 +38,19 @@
                 <label class="custom-file-label" for="validatedInputGroupCustomFile">Change Image</label>
             </div>
 
-            <div class="input-group-append">
-                <a href="{{ route('lab.image.view', $lab->id) }}" target="_blank"
-                    class="btn btn-outline-secondary rounded ml-2" type="button">View</a>
-            </div>
+           @if ($lab->image)
+               <div class="input-group-append">
+                    <a href="{{ route('lab.image.view', $lab->id) }}" target="_blank" class="btn btn-outline-secondary rounded ml-2"
+                        type="button">View</a>
+                </div>
+           @endif
         </div>
 
-        <label class="col-form-label text-md-right">Video</label>
-        <div class="input-group mb-3">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" name="video" id="validatedInputGroupCustomFile">
-                <label class="custom-file-label" for="validatedInputGroupCustomFile">Choose Video</label>
+        <div class="form-group">
+            <label class="col-form-label text-md-right">Video</label>
+            <div class="row">
+                <input class="form-control mx-3" name="video" value="{{ $lab->video }}" />
             </div>
-
-            @if ($lab->video)
-            <div class="input-group-append">
-                <a href="{{ route('lab.video.view', $lab->id) }}" target="_blank"
-                    class="btn btn-outline-secondary rounded ml-2" type="button">View</a>
-            </div>
-
-            <div class="input-group-append">
-                <a href="{{ route('lab.video.delete', $lab->id) }}"
-                    class="btn btn-outline-danger rounded ml-2" type="button">Remove</a>
-            </div>
-            @endif
         </div>
 
         <div class="form-group">
@@ -63,6 +59,9 @@
                 <textarea class="form-control" id="my-editor" name="description"
                     required>{{ $lab->description }}</textarea>
             </div>
+            @error('description')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
 
         <a href="{{ route('labs') }}" class="btn btn-secondary" data-dismiss="modal">Back</a>
@@ -70,3 +69,4 @@
     </form>
 </div>
 @endsection
+

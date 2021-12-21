@@ -10,12 +10,22 @@
         @csrf
         @method('PATCH')
         <div class="row">
+            <div class="col-md-6 d-flex justify-content-center align-items-center">
+                @if ($teacher->image)
+                    <img src="{{ asset($teacher->image) }}" alt="" class="rounded-circle" style="width: 200px; height: 200px">
+                @else
+                    <img src="{{ asset('images/avatar.png') }}" alt="" class="rounded-circle" style="width: 200px; height: 200px">
+                @endif
+            </div>
             <div class="col-md-6">
                 <div class="form-group">
                     <label class="col-form-label text-md-right">Name</label>
                     <div class="row">
                         <input class="form-control mx-3" name="name" required value="{{ $teacher->name }}" />
                     </div>
+                    @error('name')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 
                 <div class="form-group">
@@ -26,6 +36,9 @@
                             $department->name }}</option>
                         @endforeach
                     </select>
+                    @error('department')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
                 
                 <label class="col-form-label text-md-right">Image</label>
@@ -36,9 +49,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6 d-flex justify-content-center align-items-center">
-                <img src="{{ asset($teacher->image) }}" alt="" class="rounded-circle" style="width: 200px; height: 200px">
-            </div>
+            
         </div>
 
         <div class="form-group">
@@ -47,6 +58,9 @@
                 <textarea class="form-control" id="my-editor" name="description"
                     required>{{ $teacher->description }}</textarea>
             </div>
+            @error('description')
+            <span class="text-danger">{{ $message }}</span>
+            @enderror
         </div>
 
         <a href="{{ route('teachers') }}" class="btn btn-secondary" data-dismiss="modal">Back</a>
@@ -54,3 +68,4 @@
     </form>
 </div>
 @endsection
+

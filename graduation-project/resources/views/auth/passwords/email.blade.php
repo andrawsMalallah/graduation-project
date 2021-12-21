@@ -3,9 +3,9 @@
 @section('content')
 <div class="container form">
     <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card ">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+        <div class="col-md-6">
+            <div class="card shadow-sm px-3">
+                <h3 class="text-center py-3 mt-2">{{ __('Reset Password') }}</h3>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -17,13 +17,10 @@
                     <form method="POST" action="{{ route('password.email') }}">
                         @csrf
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address')
-                                }}</label>
-
-                            <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                    name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                    name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Email" autofocus>
 
                                 @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -33,9 +30,9 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-success">
+                        <div class="form-group mb-0">
+                            <div class="">
+                                <button type="submit" class="btn btn-primary">
                                     {{ __('Send Password Reset Link') }}
                                 </button>
                             </div>

@@ -10,9 +10,17 @@ class UsersController extends Controller
 {
     public function index()
     {
-        $users = User::all();
+        $users = User::orderBy('name', 'ASC')->get();
 
         return view('backend.users.index', compact('users'));
+    }
+
+    public function permission(User $user)
+    {
+        $user->blogger = !$user->blogger;
+        $user->save();
+
+        return back()->with('message', 'User updated successfully');
     }
 
     public function delete(User $user)

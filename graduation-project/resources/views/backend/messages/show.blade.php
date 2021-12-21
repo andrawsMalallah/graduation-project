@@ -1,19 +1,11 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="pt-4">
-    <a href="{{ route('messages') }}" class="btn btn-sm btn-info mb-2">{{ '< ' }}Back</a>
-    <div class="card text-center">
-        <div class="card-header">
-            {{ $contact->name }}
-        </div>
-        <div class="card-body">
-            <h5 class="card-title">{{ $contact->email }}</h5>
-            <p class="card-text">{{ $contact->message }}</p>
-        </div>
-        <div class="card-footer text-muted">
-            {{ \Carbon\Carbon::parse($contact->created_at)->diffForHumans() }}
-        </div>
-    </div>
+<div class="pt-5">
+   <div class="card border-0 p-4">
+       <h3 class="pb-2"><strong>From:</strong> {{ $contact->name }} ({{ $contact->email }})</h3>
+    <p class="">{{ $contact->message }}</p>
+    {{ \Carbon\Carbon::parse($contact->created_at)->diffForHumans() }}
+   </div>
 </div>
 @endsection

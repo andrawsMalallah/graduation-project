@@ -16,10 +16,10 @@ class CreateLabsTable extends Migration
         Schema::create('labs', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('department_id');
-            $table->string('image');
-            $table->string('video')->nullable();
-            $table->string('description');
+            $table->unsignedBigInteger('department_id');
+            $table->foreign('department_id')->references('id')->on('departments')->onDelete('cascade');
+            $table->string('image')->nullable();
+            $table->longText('description');
             $table->timestamps();
         });
     }

@@ -8,14 +8,12 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{ config('app.name', 'EETC') }}</title>
+        <title>{{ config('app.name', 'Electrical Engineering Technical College') }}</title>
+
+        <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-
-        <!-- Fonts -->
-        <link rel="dns-prefetch" href="//fonts.gstatic.com">
-        <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -23,20 +21,14 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/reset-navbar.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style-navbar.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/ionicon-navbar.min.css') }}">
-        
-        {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0- 
-             alpha/css/bootstrap.css" rel="stylesheet"> --}}
-        
+
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-        
-        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
-        
+
+        <link rel="stylesheet" type="text/css"
+            href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 
-        <!-- Font Awesome  -->
-        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
-            integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
-            crossorigin="anonymous" />
 
         <style>
             .header .menu>.menu-item>.sub-menu {
@@ -47,8 +39,11 @@
                 color: #3490dc;
             }
 
-            :root {
+            .header .menu>.menu-item>.sub-menu {
+                border-top: none;
+            }
 
+            :root {
                 --color-pink: #3490dc;
             }
         </style>
@@ -62,9 +57,8 @@
                 <section class="container">
                     <div class="wrapper" style="height: 89px">
                         <a href="/">
-                            <img src="{{ asset('images/logo-edited.jpg') }}" style="height: 85px ;" class="brand">
+                            <img src="{{ asset('images/logo.jpg') }}" style="height: 85px ;" class="brand">
                         </a>
-                        <!-- <li class="menu-item" ><a href="#">Home</a></li> -->
 
                         <button type="button" class="burger-menu" id="burger">
                             <span></span>
@@ -74,13 +68,13 @@
                         </button>
                         <div class="overlay" id="overlay">
                         </div>
-                        <nav class="navbar" id="navbar">
+                        <nav class="navbar" id="navbar" style="text-decoration: none;">
                             <ul class="menu" style="height: 48px;">
                                 @auth
                                 <li class="menu-item menu-item-child">
                                     <a href="#" data-toggle="sub-menu">{{ Auth::user()->name }}<i
                                             class="expand"></i></a>
-                                    <ul class="sub-menu">
+                                    <ul class="sub-menu shadow-lg">
                                         <li class="menu-item"><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">Logout</a>
 
@@ -89,12 +83,12 @@
                                                 @csrf
                                             </form>
                                         </li>
-                                        <li class="menu-item"><a href="{{ route('dashboard') }}">Dashboard</a>
-                                        </li>
+                                        @if(Auth::user()->admin)
+                                        <li class="menu-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                        @endif
                                     </ul>
                                 </li>
                                 @endauth
-                                <li class="menu-item"><a href="{{ route('sliders') }}">Sliders</a></li>
                                 <li class="menu-item"><a href="{{ route('departments') }}">Departments</a></li>
                                 <li class="menu-item"><a href="{{ route('labs') }}">Labs</a></li>
                                 <li class="menu-item"><a href="{{ route('teachers') }}">Teachers</a></li>
@@ -113,7 +107,6 @@
             </main>
 
         </div>
-        <script defer src="{{ asset('js/script-navbar.js') }}"></script>
         <script>
             @if(Session::has('message'))
           toastr.options =

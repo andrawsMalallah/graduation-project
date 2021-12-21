@@ -27,4 +27,9 @@ class Department extends Model
     {
         return $this->hasMany(Lab::class);
     }
+
+    public function library()
+    {
+        return $this->hasMany(Library::class);
+    }
 }

@@ -1,39 +1,37 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="d-flex justify-content-between align-items-baseline pt-3 pb-4">
-    <h5>Blog posts</h5>
-    <a type="button" class="btn btn-sm btn-success" data-toggle="modal" data-target="#Modal">
+<div class="d-flex justify-content-between align-items-baseline py-4 my-3">
+    <h4>Blog posts</h4>
+    <a type="button" class="btn btn-success" data-toggle="modal" data-target="#Modal">
         Add a Post
     </a>
 </div>
 
-<table class="table">
-    <thead>
+<table class="table table-bordered">
+    <thead class="thead-light">
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Description</th>
+            <th scope="col">Title</th>
             <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($posts as $post)
         <tr>
-            <td class="font-weight-bold">{{ $post->user->name }}</td>
-            <td>{{substr($post->description, 0, 100)}}...</td>
+            <td>{{ $post->title }}</td>
             <td>
                 @if (!$post->approved)
                 <form action="{{ route('post.approve', $post->id) }}" method="post" class="d-inline-block">
                     @method('PATCH')
                     @csrf
-                    <button class="btn btn-sm btn-primary">Approve</button>
+                    <button class="btn btn-sm btn-primary mt-1">Approve</button>
                 </form>
                 @endif
-                <a href="{{ route('post.show', $post->id) }}" class="btn btn-sm btn-secondary mb-1">View</a>
+                <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-info mt-1">Edit</a>
                 <form action="{{ route('post.delete', $post->id) }}" method="post" class="d-inline-block">
                     @method('DELETE')
                     @csrf
-                    <button class="btn btn-sm btn-danger mb-1">Delete</button>
+                    <button class="btn btn-sm btn-danger mt-1">Delete</button>
                 </form>
             </td>
         </tr>
@@ -53,7 +51,17 @@
             <form action="{{ route('blog.store') }}" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="modal-body">
-                    <div class="input-group mb-3">
+                    <div class="form-group">
+                        <label class="col-form-label text-md-right">Title</label>
+                        <div class="row">
+                            <input class="form-control mx-3" name="title" required />
+                        </div>
+                        @error('title')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
+                    </div>
+
+                    <div class="input-group">
 
                         <div class="custom-file">
                             <input type="file" required name="image" class="custom-file-input" id="inputGroupFile01"
@@ -61,23 +69,28 @@
                             <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
                         </div>
                     </div>
+                    @error('image')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
-                    <div class="form-group">
+                    <div class="form-group mt-1">
                         <label class="col-form-label text-md-right">Description</label>
                         <div class="">
-                            <textarea class="form-control" required rows="3" name="description"></textarea>
+                            <textarea class="form-control" required rows="3" id="my-editor"
+                                name="description"></textarea>
                         </div>
+                        @error('description')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
-                    @auth
-                    <input type="hidden" name="user_id" value="{{ Auth::user()->id }}">
-                    @endauth
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn btn-primary">Post</button>
+                    <button type="submit" class="btn btn-success">Post</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 @endsection
+

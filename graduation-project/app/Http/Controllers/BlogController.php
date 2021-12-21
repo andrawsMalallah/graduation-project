@@ -11,28 +11,34 @@ class BlogController extends Controller
     {
         $posts = Blog::orderBy('created_at', 'DESC')->get();
 
-        return view('frontend.blog', compact('posts'));
+        return view('frontend.blog.index', compact('posts'));
     }
 
     public function store(Request $request)
     {
         $request->validate([
+            'title' => 'required',
             'image' => 'required',
             'description' => 'required'
         ]);
 
 
         $imgName = $request->file('image')->getClientOriginalName();
-        $imgName = time().'.'.$imgName;
+        $imgName = time() . '.' . $imgName;
 
         $request->file('image')->move(public_path('images/blog'), $imgName);
 
         Blog::create([
-            'user_id' => $request->user_id,
+            'title' => $request->title,
             'image' => 'images/blog/' . $imgName,
             'description' => $request->description
         ]);
-        return back();
+        return back()->with('message', 'Post create successfully');
+    }
+
+    public function show(Blog $blog)
+    {
+        return view('frontend.blog.post', compact('blog'));
     }
 
     // dashboard
@@ -51,9 +57,43 @@ class BlogController extends Controller
         return back()->with('message', 'Post approves successfully');
     }
 
-    public function show(Blog $blog)
+    public function edit(Blog $blog)
     {
-        return view('backend.blog.show', compact('blog'));
+        return view('backend.blog.edit', compact('blog'));
+    }
+
+    public function update(Request $request, Blog $blog)
+    {
+        $request->validate([
+            'description' => 'required',
+            'title' => 'required',
+        ]);
+
+        $blog->title = $request->title;
+        $blog->description = $request->description;
+
+        if ($request->file('image')) {
+            unlink(public_path($blog->image));
+
+            $imgName = $request->file('image')->getClientOriginalName();
+            $imgName = time() . '.' . $imgName;
+
+            $request->file('image')->move(public_path('images/blog'), $imgName);
+
+            $blog->image = 'images/blog/' . $imgName;
+        }
+
+        $blog->save();
+
+        return back()->with('message', 'Post updated successfully');
+    }
+
+
+    public function imageView(Blog $blog)
+    {
+        $image = $blog->image;
+
+        return view('backend.imageView', compact('image'));
     }
 
     public function delete(Blog $blog)

@@ -1,12 +1,12 @@
 @extends('layouts.dashboard')
 
 @section('content')
-<div class="d-flex justify-content-between align-items-baseline pt-3 pb-4">
-    <h5>Messages</h5>
+<div class="d-flex justify-content-between align-items-baseline py-4 my-3">
+    <h4>Messages</h4>
 </div>
 
-<table class="table">
-    <thead>
+<table class="table table-bordered">
+    <thead class="thead-light">
         <tr>
             <th scope="col">Name</th>
             <th scope="col">Email</th>
@@ -19,7 +19,7 @@
             <td>{{ $message->name }}</td>
             <td>{{ $message->email }}</td>
             <td>
-                <a href="{{ route('messages.show', $message->id) }}" class="btn btn-sm btn-secondary mb-1">View</a>
+                <a href="{{ route('messages.show', $message->id) }}" class="btn btn-sm btn-info mb-1">View</a>
                 <form action="{{ route('messages.delete', $message->id) }}" method="POST" class="d-inline-block">
                     @csrf
                     @method('DELETE')

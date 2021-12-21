@@ -10,7 +10,7 @@ class TeachersController extends Controller
 {
     public function index()
     {
-        $departments = Department::orderBy('name', 'ASC')->get(['id', 'name']);
+        $departments = Department::where('type', 'scientific')->orderBy('name', 'ASC')->get(['id', 'name']);
         $teachers = Teacher::with(['department'])->orderBy('name', 'ASC')->get();
         return view('backend.teachers.index', compact('departments', 'teachers'));
     }
@@ -45,7 +45,7 @@ class TeachersController extends Controller
 
     public function edit(Teacher $teacher)
     {
-        $departments = Department::get(['id', 'name']);
+        $departments = Department::where('type', 'scientific')->get(['id', 'name']);
         return view('backend.teachers.edit', compact('teacher', 'departments'));
     }
 
@@ -62,7 +62,10 @@ class TeachersController extends Controller
         $teacher->description = $request->description;
 
         if ($request->file('image')) {
-            unlink(public_path($teacher->image));
+            if ($teacher->image) {
+                unlink(public_path($teacher->image));
+            }
+
             $imgName = $request->file('image')->getClientOriginalName();
             $imgName = time().'.'.$imgName;
 
@@ -85,5 +88,11 @@ class TeachersController extends Controller
         $teacher->delete();
 
         return back()->with('message', 'Teacher deleted successfully');
+    }
+
+    // frontend
+    public function show(Teacher $teacher)
+    {
+        return view('frontend.department.teacher', compact('teacher'));
     }
 }

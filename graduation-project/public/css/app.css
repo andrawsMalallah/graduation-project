@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap);
 @charset "UTF-8";
 /*!
  * Bootstrap v4.6.1 (https://getbootstrap.com/)
@@ -10019,6 +10019,12 @@ h3 {
     border-color: #dee2e6;
   }
 }
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Lato", sans-serif;
+}
+
 body,
 html,
 .main-content {
@@ -10027,30 +10033,28 @@ html,
 
 body {
   min-height: 100vh;
+  background-color: #f3f4f6;
+}
+
+p {
+  font-size: 1.1rem;
+  padding: 3px 0 !important;
+  margin: 3px 0 !important;
 }
 
 .content {
   padding-top: 94px;
-  min-height: calc(100vh - 55px);
+  min-height: calc(100vh - 65px);
 }
 
 .carousel-img {
   height: 500px;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
-.carousel {
-  position: relative;
-}
-
-.caption {
-  position: absolute;
-  bottom: 30px;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-.caption p {
-  font-size: 2rem;
+.carousel-title {
+  font-size: 1.8rem;
 }
 
 .carousel-item::before {
@@ -10067,17 +10071,20 @@ body {
   border-bottom: 3px solid #3490dc;
   height: 20px;
   width: 250px;
-  margin: 0 auto;
+  margin: -13px auto;
 }
 
-.department-info {
-  display: flex;
+.department {
+  width: 14rem;
 }
 
-.department-info img {
-  width: 200px !important;
-  -o-object-fit: contain;
-     object-fit: contain;
+.department:hover {
+  transition: 0.2s ease-in-out;
+  transform: translateY(-3%);
+}
+
+.department img {
+  height: 200px;
 }
 
 .social-links {
@@ -10107,23 +10114,8 @@ body {
   height: 250px;
 }
 
-.books {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-}
-
 .book {
   margin: 10px;
-}
-
-.toggle {
-  font-size: 1.3rem;
-}
-
-.overflow {
-  overflow: auto;
 }
 
 .links a {
@@ -10163,21 +10155,90 @@ body {
   color: #3490dc !important;
 }
 
+.fab {
+  font-size: 1.1rem;
+}
+
 .slider {
   width: 150px;
 }
 
-.error {
-  background-color: rgba(189, 34, 34, 0.8);
+.teacher-info {
+  font-size: 1.5rem;
+}
+
+.teacher-image {
+  height: 180px;
+  width: 180px;
+}
+
+.teachers-image {
+  height: 200px;
+  width: 200px;
+}
+
+.teacher-card:hover {
+  transition: 0.2s ease-in-out;
+  transform: scale(1.1);
+}
+
+.post-container {
+  width: 700px;
+}
+
+.dep-video {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 600px;
+  margin: 0 auto;
+}
+
+.dep-video iframe {
+  width: 100%;
+  height: 100%;
+}
+
+.about p,
+.about li {
+  font-size: 1.1rem;
+}
+
+.search-result h4 {
+  font-size: 1.2rem;
+}
+
+.search-result:hover h4 {
+  color: #3490dc;
+}
+
+.footer-logo {
+  font-size: 1.3rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.about-table {
+  font-size: 1rem;
+}
+
+.post-img-search {
+  width: 150px;
+  height: 100px;
+}
+
+.post-title:hover {
+  color: #3490dc;
 }
 
 @media (max-width: 500px) {
   .content {
-    min-height: calc(100vh - 95px);
+    min-height: calc(100vh - 105px);
   }
 
   .carousel-img {
-    height: 400px;
+    height: 250px !important;
   }
 
   .caption p {
@@ -10210,5 +10271,66 @@ body {
 
   .content-sm {
     width: 250px !important;
+  }
+
+  .carousel-title {
+    font-size: 1rem;
+  }
+
+  .dep-video {
+    height: 250px !important;
+  }
+
+  .teachers-image {
+    height: 200px !important;
+    width: 200px !important;
+  }
+
+  .post-img-search {
+    display: none;
+  }
+
+  .books-container {
+    justify-content: center;
+  }
+}
+@media (max-width: 768px) {
+  .carousel-img {
+    height: 350px;
+  }
+
+  .teacher-image {
+    height: 150px;
+    width: 150px;
+  }
+
+  .post-container {
+    width: auto;
+  }
+
+  .post-desc {
+    display: none;
+  }
+
+  .dep-video {
+    height: 380px;
+  }
+
+  .department {
+    width: 18rem;
+  }
+
+  .teachers-image {
+    height: 150px;
+    width: 150px;
+  }
+}
+@media (min-width: 800px) {
+  .post {
+    width: 700px;
+  }
+
+  .teacher-container {
+    display: flex;
   }
 }

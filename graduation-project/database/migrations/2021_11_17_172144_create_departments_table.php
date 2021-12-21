@@ -19,8 +19,7 @@ class CreateDepartmentsTable extends Migration
             $table->string('type');
             $table->string('image');
             $table->string('video')->nullable();
-            $table->text('short_description');
-            $table->longText('long_description');
+            $table->longText('description');
             $table->timestamps();
         });
     }
