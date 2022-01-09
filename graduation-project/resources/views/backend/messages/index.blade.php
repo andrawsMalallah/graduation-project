@@ -8,22 +8,22 @@
 <table class="table table-bordered">
     <thead class="thead-light">
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Action</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Name</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Email</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($messages as $message)
         <tr>
-            <td>{{ $message->name }}</td>
-            <td>{{ $message->email }}</td>
-            <td>
-                <a href="{{ route('messages.show', $message->id) }}" class="btn btn-sm btn-info mb-1">View</a>
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: sub;'>{{ $message->name }}</td>
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: sub;'>{{ $message->email }}</td>
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: sub;'>
+                <form class="d-inline-block" > <a href="{{ route('messages.show', $message->id) }}" style="vertical-align: middle;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom" >View</a></form>
                 <form action="{{ route('messages.delete', $message->id) }}" method="POST" class="d-inline-block">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger mb-1">Delete</button>
+                    <button type="submit"  id="para1" style="background: #e3342f; border-color: #e3342f;vertical-align: middle;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom" onclick="return confirm('Are you sure you want to delete {{ $message->name }}?');" >Delete</button>
                 </form>
 
             </td>

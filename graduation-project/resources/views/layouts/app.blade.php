@@ -26,6 +26,7 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
         <link rel="stylesheet" type="text/css" href="{{ asset('css/reset-navbar.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style-navbar.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/ionicon-navbar.min.css') }}">
+        
 
         <!-- Font Awesome  -->
         <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
@@ -74,10 +75,10 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
                         <div class="overlay" id="overlay">
                         </div>
                         <nav class="navbar" id="navbar">
-                            <ul class="menu" style="height: 48px;">
+                            <ul class="menu" style='height: 48px; font-family: "Segoe UI",Tahoma,Geneva,Verdana,sans-serif;'>
                                 
                                 <li class="menu-item menu-item-child">
-                                    <a href="#" data-toggle="sub-menu">Scientific Departments<i class="expand"></i></a>
+                                    <a style="text-decoration: none;" href="#" data-toggle="sub-menu">Scientific Departments<i class="expand"></i></a>
                                     <ul class="sub-menu shadow-lg">
                                         @foreach ($departments as $department)
                                         <li class="menu-item"><a
@@ -102,7 +103,7 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
 
                                 <li class="menu-item menu-item-child">
                                     <a href="#" data-toggle="sub-menu">
-                                        Search <svg class="ml-1" width="16" height="18" fill="currentColor">
+                                                         <svg class="ml-1" width="16" height="18" fill="currentColor">
                                             <path
                                                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 

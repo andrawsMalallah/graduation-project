@@ -11,28 +11,30 @@
 <table class="table table-bordered">
     <thead class="thead-light">
         <tr>
-            <th scope="col">Title</th>
-            <th scope="col">Action</th>
+            <th style="width: 77%; text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Title</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($posts as $post)
         <tr>
-            <td>{{ $post->title }}</td>
-            <td>
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: text-top;'>{{ $post->title }}</td>
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: text-top;' >
                 @if (!$post->approved)
                 <form action="{{ route('post.approve', $post->id) }}" method="post" class="d-inline-block">
                     @method('PATCH')
                     @csrf
-                    <button class="btn btn-sm btn-primary mt-1">Approve</button>
+                    <button style='vertical-align: text-top;' class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom">Approve</button>
                 </form>
                 @endif
-                <a href="{{ route('post.edit', $post->id) }}" class="btn btn-sm btn-info mt-1">Edit</a>
+                <form class="d-inline-block">
+                <a href="{{ route('post.edit', $post->id) }}" style="vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom">Edit</a></form>
                 <form action="{{ route('post.delete', $post->id) }}" method="post" class="d-inline-block">
                     @method('DELETE')
                     @csrf
-                    <button class="btn btn-sm btn-danger mt-1">Delete</button>
+                    <button  id="para1" style="background: #e3342f; border-color: #e3342f;vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom" onclick="return confirm('Are you sure you want to delete this item?');" >Delete</button>
                 </form>
+               
             </td>
         </tr>
         @endforeach

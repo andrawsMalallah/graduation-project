@@ -24,7 +24,7 @@
             <select class="custom-select" name="type" required>
                 <option selected disabled>Select The Type</option>
                 <option value="scientific" {{ $department->type == 'scientific' ? 'selected' : '' }}>Scientific</option>
-                <option value="management" {{ $department->type == 'management' ? 'selected' : '' }}>management</option>
+                <option value="management" {{ $department->type == 'management' ? 'selected' : '' }}>Management</option>
             </select>
             @error('type')
             <span class="text-danger">{{ $message }}</span>
