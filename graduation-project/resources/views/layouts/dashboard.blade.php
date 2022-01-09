@@ -21,7 +21,8 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/reset-navbar.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style-navbar.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/ionicon-navbar.min.css') }}">
-
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/cstm-buttons.css') }}">
+        
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <link rel="stylesheet" type="text/css"
@@ -141,7 +142,7 @@
           @endif
         </script>
 
-        <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+        <script src="/ckeditor/ckeditor.js"></script>
         <script>
             if (document.getElementById('my-editor')) {
                 CKEDITOR.replace('my-editor');

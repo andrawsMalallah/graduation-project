@@ -11,24 +11,24 @@
 <table class="table table-bordered">
     <thead class="thead-light">
         <tr>
-            <th scope="col">Book name</th>
-            <th scope="col">Department</th>
-            <th scope="col">Stage</th>
-            <th scope="col">Action</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Book name</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Department</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Stage</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($books as $book)
-        <tr>
-            <td>{{ $book->name }}</td>
-            <td>{{ $book->department->name }}</td>
-            <td>{{ $book->stage }}</td>
-            <td>
-                <a href="{{ route('library.edit', $book->id) }}" class="btn btn-sm btn-info mb-1">Edit</a>
+        <tr >
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: middle;' >{{ $book->name }}</td>
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: middle;' >{{ $book->department->name }}</td>
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: middle;' >{{ $book->stage }}</td>
+            <td style='text-align:center; vertical-align: middle; ;font-family: inherit; font-size: 0.9rem; font-weight: 600;' >
+                <form class="d-inline-block" > <a href="{{ route('library.edit', $book->id) }}"  style="vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom" >Edit</a></form>
                 <form action="{{ route('library.delete', $book->id) }}" method="POST" class="d-inline-block">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger mb-1">Delete</button>
+                    <button type="submit" id="para1" style="background: #e3342f; border-color: #e3342f; vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
                 </form>
             </td>
         </tr>

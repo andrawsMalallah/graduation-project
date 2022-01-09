@@ -33,7 +33,7 @@
 
 <section class="py-4">
     <div class="container">
-        <h2 class="text-center">SCIENTIFIC DEPARTMENTS</h2>
+        <h2 class="text-center">Scientific Departments</h2>
         <div class="underline"></div>
 
         <div class="departments my-4 d-flex flex-wrap">
