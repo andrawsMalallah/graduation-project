@@ -11,28 +11,43 @@
 <table class="table table-bordered">
     <thead class="thead-light">
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Department</th>
-            <th scope="col">Action</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Name</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Department
+            </th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($labs as $lab)
         <tr>
-            <td>{{ $lab->name }}</td>
-            <td>{{ $lab->department->name }}</td>
-            <td>
-                <a href="{{ route('lab.edit', $lab->id) }}" class="mb-1 btn btn-sm btn-info">Edit</a>
+            <td
+                style='text-align:center ;height: 100%; font-family: inherit; font-size: 0.9rem; font-weight: 600;color: #495057; vertical-align: middle;'>
+                {{ $lab->name }}</td>
+            <td
+                style='text-align:center ;height: 100%; font-family: inherit; font-size: 0.9rem; font-weight: 600;color: #495057; vertical-align: middle;'>
+                {{ $lab->department->name }}</td>
+            <td
+                style='text-align:center ;height: 100%; font-family: inherit; font-size: 0.9rem; font-weight: 600;color: #495057; vertical-align: middle;'>
+                <form class="d-inline-block"> <a href="{{ route('lab.edit', $lab->id) }}"
+                        style="vertical-align: text-top;"
+                        class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom">Edit</a></form>
                 <form action="{{ route('lab.delete', $lab->id) }}" method="post" class="d-inline-block">
                     @method('DELETE')
                     @csrf
-                    <button class="btn btn-sm btn-danger mb-1">Delete</button>
+                    <button type="submit" id="para1"
+                        style="background: #e3342f; border-color: #e3342f; vertical-align: text-top;"
+                        class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom"
+                        onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
                 </form>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+
+@if ($labs->isEmpty())
+<h4 class="text-center">No data in the table</h4>
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -84,7 +99,7 @@
                     @error('description')
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

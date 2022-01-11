@@ -6,7 +6,10 @@
     <div class="mx-auto">
         <h4 class="pt-4">{{ $blog->title }}</h4>
         <p class="">{!! $blog->description !!}</p>
-        <h6 class="pt-1 font-weight-bold">{{ \Carbon\Carbon::parse($blog->created_at)->diffForHumans() }}</h6>
+        <div class="d-flex align-items-center justify-content-between w-full">
+            <h6 style='font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"'
+                class="pt-3 font-weight-bold">{{ \Carbon\Carbon::parse($blog->created_at)->diffForHumans() }}</h6>
+        </div>
     </div>
 </div>
 @endsection

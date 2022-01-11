@@ -19,7 +19,7 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
-        
+
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -32,13 +32,9 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
             integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p"
             crossorigin="anonymous" />
 
-            @yield('links')
+        @yield('links')
 
         <style>
-            .header .menu>.menu-item>.sub-menu {
-                border-top: 3px solid #3490dc;
-            }
-
             .header .menu>.menu-item:hover>a {
                 color: #3490dc;
             }
@@ -46,10 +42,6 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
             :root {
 
                 --color-pink: #3490dc;
-            }
-
-            .header .menu>.menu-item>.sub-menu {
-                border-top: none;
             }
         </style>
     </head>
@@ -74,14 +66,16 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
                         <div class="overlay" id="overlay">
                         </div>
                         <nav class="navbar" id="navbar">
-                            <ul class="menu" style="height: 48px;">
-                                
+                            <ul class="menu"
+                                style='height: 48px; font-family: "Segoe UI",Tahoma,Geneva,Verdana,sans-serif;'>
+
                                 <li class="menu-item menu-item-child">
-                                    <a href="#" data-toggle="sub-menu">Scientific Departments<i class="expand"></i></a>
+                                    <a style="text-decoration: none;" href="#" data-toggle="sub-menu">Scientific
+                                        Departments<i class="expand"></i></a>
                                     <ul class="sub-menu shadow-lg">
                                         @foreach ($departments as $department)
                                         <li class="menu-item"><a
-                                                href="{{ route('department.show', $department->id) }}">{{
+                                                href="{{ route('department.show', $department->name) }}">{{
                                                 $department->name }}</a></li>
                                         @endforeach
                                     </ul>
@@ -91,7 +85,7 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
                                             class="expand"></i></a>
                                     <ul class="sub-menu shadow-lg">
                                         @foreach ($units as $unit)
-                                        <li class="menu-item"><a href="{{ route('department.show', $unit->id) }}">{{
+                                        <li class="menu-item"><a href="{{ route('department.show', $unit->name) }}">{{
                                                 $unit->name }}</a></li>
                                         @endforeach
                                     </ul>
@@ -102,7 +96,7 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
 
                                 <li class="menu-item menu-item-child">
                                     <a href="#" data-toggle="sub-menu">
-                                        Search <svg class="ml-1" width="16" height="18" fill="currentColor">
+                                        <svg class="ml-1" width="16" height="18" fill="currentColor">
                                             <path
                                                 d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
 
@@ -121,20 +115,30 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
                                         </li>
                                     </ul>
                                 </li>
-                               @auth
+                                @auth
                                 <li class="menu-item menu-item-child">
-                                    <a href="#" data-toggle="sub-menu">{{ Auth::user()->name }}<i class="expand"></i></a>
+                                    <a href="#" data-toggle="sub-menu">{{ Auth::user()->name }}<i
+                                            class="expand"></i></a>
                                     <ul class="sub-menu shadow-lg">
-                                        <li class="menu-item"><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                                        document.getElementById('logout-form').submit();">Logout</a>
-                                
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                                                @csrf
-                                            </form>
+                                        @if (Auth::user()->admin || Auth::user()->blogger)
+                                        <li class="menu-item">
+                                            <a href="#" data-toggle="modal" data-target="#Modal">Create new post</a>
                                         </li>
+                                        @endif
+
                                         @if(Auth::user()->admin)
                                         <li class="menu-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
                                         @endif
+
+                                        <li class="menu-item"><a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                        document.getElementById('logout-form').submit();">Logout</a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
                                     </ul>
                                 </li>
                                 @endauth
@@ -153,15 +157,20 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
                     <div class="container">
                         <div class="d-flex justify-content-between align-items-baseline">
 
-                            <a href="/" class=" text-decoration-none"><h4 class="footer-logo">EETC</h4></a>
+                            <a href="/" class=" text-decoration-none">
+                                <h4 class="footer-logo">EETC</h4>
+                            </a>
                             <h5 class="text-dark ">
                                 &copy; All Rights Reserved | {{ date('Y') }}
                             </h5>
 
                             <div class="social">
-                                <a href="https://www.facebook.com/eetc.edu.iq" target="_blank" class="text-dark pr-2"><i class="fab fa-facebook"></i></a>
-                                <a href="https://www.youtube.com/channel/UCqzrjmOsxHEPrpbyLO1UJgA" target="_blank" class="text-dark pr-2"><i class="fab fa-youtube"></i></a>
-                                <a href="https://www.linkedin.com/company/electrical-engineering-technical-college/?viewAsMember=true" target="_blank"class="text-dark"><i class="fab fa-linkedin"></i></a>
+                                <a href="https://www.facebook.com/eetc.edu.iq" target="_blank" class="text-dark pr-2"><i
+                                        class="fab fa-facebook"></i></a>
+                                <a href="https://www.youtube.com/channel/UCqzrjmOsxHEPrpbyLO1UJgA" target="_blank"
+                                    class="text-dark pr-2"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.linkedin.com/company/electrical-engineering-technical-college/?viewAsMember=true"
+                                    target="_blank" class="text-dark"><i class="fab fa-linkedin"></i></a>
                             </div>
 
                         </div>
@@ -175,6 +184,57 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
                 </div>
             </footer>
         </div>
+
+        <!-- Modal -->
+        <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="ModalLabel">Create New Post</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <form action="{{ route('blog.store') }}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="row">
+                                    <input class="form-control mx-3" name="title" required placeholder="Post Title" />
+                                </div>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <div class="custom-file">
+                                    <input type="file" required name="image" class="custom-file-input"
+                                        id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-form-label text-md-right">Description</label>
+                                <div class="">
+                                    <textarea class="form-control" required rows="3" name="description"
+                                        id="my-editor"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary">Post</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <script src="/ckeditor/ckeditor.js"></script>
+        <script>
+            if (document.getElementById('my-editor')) {
+                CKEDITOR.replace('my-editor');
+            }
+        </script>
 
         @yield('script')
     </body>

@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 
 class LibraryController extends Controller
 {
-    public function index($department_id)
+    public function index($department_name)
     {
-        $department = Department::where('id', $department_id)->first();
-        $books = Library::where('department_id', $department_id)->orderBy('name', 'ASC')->get();
+        $department = Department::where('name', $department_name)->first();
+        $books = Library::where('department_id', $department->id)->orderBy('name', 'ASC')->get();
         return view('frontend.department.library', compact('books', 'department'));
     }
 
@@ -24,17 +24,18 @@ class LibraryController extends Controller
         return view('backend.library.index', compact('departments', 'books'));
     }
 
-    public function store (Request $request) {
+    public function store(Request $request)
+    {
         $request->validate([
             'name' => 'required',
             'department' => 'required',
             'stage' => 'required',
-            'link' => 'required',
+            'link' => 'required|url',
             'image' => 'required'
         ]);
 
         $imgName = $request->file('image')->getClientOriginalName();
-        $imgName = time().'.'.$imgName;
+        $imgName = time() . '.' . $imgName;
 
         $request->file('image')->move(public_path('images/library'), $imgName);
 
@@ -43,7 +44,7 @@ class LibraryController extends Controller
             'department_id' => $request->department,
             'stage' => $request->stage,
             'link' => $request->link,
-            'image' => 'images/library/'.$imgName,
+            'image' => 'images/library/' . $imgName,
         ]);
 
         return back()->with('message', 'Book added successfully');
@@ -57,7 +58,7 @@ class LibraryController extends Controller
         return view('backend.library.edit', compact('library', 'departments'));
     }
 
-    public function update(Request $request ,Library $library)
+    public function update(Request $request, Library $library)
     {
         $request->validate([
             'name' => 'required',
@@ -75,11 +76,11 @@ class LibraryController extends Controller
             unlink(public_path($library->image));
 
             $imgName = $request->file('image')->getClientOriginalName();
-            $imgName = time().'.'.$imgName;
+            $imgName = time() . '.' . $imgName;
 
             $request->file('image')->move(public_path('images/library'), $imgName);
 
-            $library->image = 'images/library/'.$imgName;
+            $library->image = 'images/library/' . $imgName;
         }
 
         $library->save();

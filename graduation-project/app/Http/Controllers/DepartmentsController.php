@@ -95,6 +95,8 @@ class DepartmentsController extends Controller
     // frontend
     public function show(Department $department)
     {
+        $department->load('teachers', 'labs');
+
         return view('frontend.department.index', compact('department'));
     }
 

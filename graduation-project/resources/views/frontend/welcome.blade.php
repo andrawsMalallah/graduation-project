@@ -9,16 +9,17 @@
     </ol>
     <div class="carousel-inner">
         @foreach ($sliders as $index => $slider)
-        
+
         <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
             <img src="{{ asset($slider->image) }}" class="d-block w-100 carousel-img" alt="...">
             <div class="carousel-caption d-md-block">
-                <a href="{{ route('post.show', $slider->id) }}" target="_blank" class="text-white text-decoration-none">
+                <a href="{{ route('post.show', $slider->title) }}" target="_blank"
+                    class="text-white text-decoration-none">
                     <h4 class="carousel-title">{{ $slider->title }}</h4>
                 </a>
             </div>
         </div>
-        
+
         @endforeach
     </div>
     <button class="carousel-control-prev" type="button" data-target="#carousel" data-slide="prev">
@@ -33,16 +34,16 @@
 
 <section class="py-4">
     <div class="container">
-        <h2 class="text-center">SCIENTIFIC DEPARTMENTS</h2>
+        <h2 class="text-center">Scientific Departments</h2>
         <div class="underline"></div>
 
-        <div class="departments my-4 d-flex flex-wrap">
+        <div class="my-4 d-flex flex-wrap">
             @foreach ($departments as $department)
-            <a class="text-dark text-decoration-none" href="{{ route('department.show', $department->id) }}">
-                <div class="card border-0 m-4 department shadow-sm">
+            <a class=" text-dark text-decoration-none" href="{{ route('department.show', $department->name) }}">
+                <div class="card border-0 m-4 department shadow">
                     <img src="{{ asset($department->image) }}" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title font-weight-bold text-capitalize">{{ $department->name }}</h5>
+                        <h6 class="card-title text-capitalize" style="font-size: 1rem">{{ $department->name }}</h6>
                     </div>
                 </div>
             </a>

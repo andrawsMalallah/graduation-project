@@ -21,6 +21,7 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/reset-navbar.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style-navbar.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/ionicon-navbar.min.css') }}">
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/cstm-buttons.css') }}">
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -31,16 +32,8 @@
 
 
         <style>
-            .header .menu>.menu-item>.sub-menu {
-                border-top: 3px solid #3490dc;
-            }
-
             .header .menu>.menu-item:hover>a {
                 color: #3490dc;
-            }
-
-            .header .menu>.menu-item>.sub-menu {
-                border-top: none;
             }
 
             :root {
@@ -70,25 +63,6 @@
                         </div>
                         <nav class="navbar" id="navbar" style="text-decoration: none;">
                             <ul class="menu" style="height: 48px;">
-                                @auth
-                                <li class="menu-item menu-item-child">
-                                    <a href="#" data-toggle="sub-menu">{{ Auth::user()->name }}<i
-                                            class="expand"></i></a>
-                                    <ul class="sub-menu shadow-lg">
-                                        <li class="menu-item"><a href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">Logout</a>
-
-                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                                class="d-none">
-                                                @csrf
-                                            </form>
-                                        </li>
-                                        @if(Auth::user()->admin)
-                                        <li class="menu-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
-                                        @endif
-                                    </ul>
-                                </li>
-                                @endauth
                                 <li class="menu-item"><a href="{{ route('departments') }}">Departments</a></li>
                                 <li class="menu-item"><a href="{{ route('labs') }}">Labs</a></li>
                                 <li class="menu-item"><a href="{{ route('teachers') }}">Teachers</a></li>
@@ -96,6 +70,26 @@
                                 <li class="menu-item"><a href="{{ route('dashboard.blog') }}">Blog</a></li>
                                 <li class="menu-item"><a href="{{ route('messages') }}">Messages</a></li>
                                 <li class="menu-item"><a href="{{ route('dashboard.users') }}">Users</a></li>
+                                @auth
+                                <li class="menu-item menu-item-child">
+                                    <a href="#" data-toggle="sub-menu">{{ Auth::user()->name }}<i
+                                            class="expand"></i></a>
+                                    <ul class="sub-menu shadow-lg">
+                                        @if(Auth::user()->admin)
+                                        <li class="menu-item"><a href="{{ route('dashboard') }}">Dashboard</a></li>
+                                        @endif
+                                        <li class="menu-item"><a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                                                document.getElementById('logout-form').submit();">Logout</a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </li>
+                                @endauth
                             </ul>
                         </nav>
                     </div>
@@ -141,7 +135,7 @@
           @endif
         </script>
 
-        <script src="//cdn.ckeditor.com/4.6.2/standard/ckeditor.js"></script>
+        <script src="/ckeditor/ckeditor.js"></script>
         <script>
             if (document.getElementById('my-editor')) {
                 CKEDITOR.replace('my-editor');

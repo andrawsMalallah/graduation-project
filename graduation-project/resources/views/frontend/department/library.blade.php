@@ -9,7 +9,7 @@
 
     <div class="books-container pt-4 d-flex flex-wrap">
         @forelse ($books as $book)
-        <div class="book">
+        <div class="book mb-5">
             <a href="{{ $book->link }}" target="_blank">
                 <img src="{{ asset($book->image) }}" class="book-cover rounded-sm" alt="">
             </a>

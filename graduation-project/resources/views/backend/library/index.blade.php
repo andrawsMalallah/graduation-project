@@ -11,30 +11,48 @@
 <table class="table table-bordered">
     <thead class="thead-light">
         <tr>
-            <th scope="col">Book name</th>
-            <th scope="col">Department</th>
-            <th scope="col">Stage</th>
-            <th scope="col">Action</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Book name
+            </th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Department
+            </th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Stage</th>
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($books as $book)
         <tr>
-            <td>{{ $book->name }}</td>
-            <td>{{ $book->department->name }}</td>
-            <td>{{ $book->stage }}</td>
-            <td>
-                <a href="{{ route('library.edit', $book->id) }}" class="btn btn-sm btn-info mb-1">Edit</a>
+            <td
+                style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: middle;'>
+                {{ $book->name }}</td>
+            <td
+                style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: middle;'>
+                {{ $book->department->name }}</td>
+            <td
+                style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: middle;'>
+                {{ $book->stage }}</td>
+            <td
+                style='text-align:center; vertical-align: middle; ;font-family: inherit; font-size: 0.9rem; font-weight: 600;'>
+                <form class="d-inline-block"> <a href="{{ route('library.edit', $book->id) }}"
+                        style="vertical-align: text-top;"
+                        class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom">Edit</a></form>
                 <form action="{{ route('library.delete', $book->id) }}" method="POST" class="d-inline-block">
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-danger mb-1">Delete</button>
+                    <button type="submit" id="para1"
+                        style="background: #e3342f; border-color: #e3342f; vertical-align: text-top;"
+                        class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom"
+                        onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
                 </form>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+
+@if ($books->isEmpty())
+<h4 class="text-center">No data in the table</h4>
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -53,7 +71,7 @@
                     <div class="form-group">
                         <label class="col-form-label text-md-right">Name</label>
                         <div class="row">
-                            <input class="form-control mx-3" name="name" required/>
+                            <input class="form-control mx-3" name="name" required />
                         </div>
                         @error('name')
                         <span class="text-danger">{{ $message }}</span>
@@ -73,17 +91,17 @@
                     </div>
 
                     <div class="form-group">
-                    <select class="custom-select" name="stage" required>
-                        <option selected disabled>Select Stage</option>
+                        <select class="custom-select" name="stage" required>
+                            <option selected disabled>Select Stage</option>
 
-                        <option value="First Stage">First Stage</option>
-                        <option value="Second Stage">Second Stage</option>
-                        <option value="Third Stage">Third Stage</option>
-                        <option value="Fourth Stage">Fourth Stage</option>
-                    </select>
-                    @error('stage')
-                    <span class="text-danger">{{ $message }}</span>
-                    @enderror
+                            <option value="First Stage">First Stage</option>
+                            <option value="Second Stage">Second Stage</option>
+                            <option value="Third Stage">Third Stage</option>
+                            <option value="Fourth Stage">Fourth Stage</option>
+                        </select>
+                        @error('stage')
+                        <span class="text-danger">{{ $message }}</span>
+                        @enderror
                     </div>
 
                     <div class="input-group">
@@ -100,7 +118,7 @@
                     <div class="form-group">
                         <label class="col-form-label text-md-right">Link</label>
                         <div class="row">
-                            <input class="form-control mx-3" name="link" required/>
+                            <input class="form-control mx-3" name="link" required />
                         </div>
                         @error('link')
                         <span class="text-danger">{{ $message }}</span>

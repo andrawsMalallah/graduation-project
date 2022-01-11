@@ -8,7 +8,7 @@
     <div class="row">
         @foreach ($department->teachers as $teacher)
         <div class="col-md-3 p-3 teacher-card">
-            <a class="text-decoration-none" href="{{ route('teacher.show', $teacher->id) }}">
+            <a class="text-decoration-none" href="{{ route('teacher.show', $teacher->name) }}">
                 @if ($teacher->image)
                     <img src="{{ asset($teacher->image) }}" class="rounded teachers-image mb-2 mx-auto" alt="">
                 @else

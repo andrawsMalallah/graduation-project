@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="container py-2">
+<section class="container py-3">
     <h1 class="text-center pt-2">College of Electrical Engineering Technical</h1>
     <div class="underline"></div>
 

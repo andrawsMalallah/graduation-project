@@ -13,7 +13,7 @@
     <section class="search-results w-100 shadow-sm mt-3 p-3 card border-0">
         @if ($post->approved)
         <a target="_blank" class="text-dark text-decoration-none search-result"
-            href="{{ route('post.show', $post->id) }}">
+            href="{{ route('post.show', $post->title) }}">
             <div class="p-3 d-flex align-items-center">
                 <img src="{{ $post->image }}" alt="" class="mr-3 post-img-search">
                 <div>
@@ -30,7 +30,7 @@
     @foreach ($departments as $department)
     <section class="search-result w-100 shadow-sm mt-3 p-3 card border-0">
         <a target="_blank" class="text-dark text-decoration-none"
-            href="{{ route('department.show', $department->id) }}">
+            href="{{ route('department.show', $department->name) }}">
             <div class="p-3">
                 <h4>{{ $department->name }}</h4>
             </div>
@@ -43,7 +43,7 @@
     @foreach ($labs as $lab)
     <section class="search-result w-100 shadow-sm mt-3 p-3 card border-0">
         <a target="_blank" class="text-dark text-decoration-none"
-            href="{{ route('lab.show', $lab->id) }}">
+            href="{{ route('lab.show', $lab->name) }}">
             <h4 class="p-3">{{ $lab->name }}</h4>
         </a>
     </section>
@@ -53,7 +53,7 @@
     @if ($teachers->count() > 0)
     @foreach ($teachers as $teacher)
     <section class="search-result w-100 shadow-sm mt-3 p-3 card border-0">
-        <a target="_blank" class="text-dark text-decoration-none" href="{{ route('teacher.show', $teacher->id) }}">
+        <a target="_blank" class="text-dark text-decoration-none" href="{{ route('teacher.show', $teacher->name) }}">
             <h4 class="p-3">{{ $teacher->name }}</h4>
         </a>
     </section>

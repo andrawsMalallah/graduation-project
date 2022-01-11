@@ -11,28 +11,43 @@
 <table class="table table-bordered">
     <thead class="thead-light">
         <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Department</th>
-            <th scope="col">Action</th>
+            <th scope="col" style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;">Name</th>
+            <th scope="col" style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;">Department
+            </th>
+            <th scope="col"
+                style="text-align:center ;width: 20% ; font-size: 0.95rem; font-weight: 600; color: #212529;">Action
+            </th>
         </tr>
     </thead>
     <tbody>
         @foreach ($teachers as $teacher)
-        <tr>
-                <td>{{ $teacher->name }}</td>
-                <td>{{ $teacher->department->name }}</td>
-                <td>
-                    <a href="{{ route('teacher.edit', $teacher->id) }}" class="btn btn-sm btn-info mb-1">Edit</a>
-                    <form action="{{ route('teacher.delete', $teacher->id) }}" method="POST" class="d-inline-block">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit" class="btn btn-sm btn-danger mb-1">Delete</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
+        <tr style='font-family: inherit; font-size: 0.9rem; font-weight: 600; vertical-align: text-top;'>
+            <td
+                style='text-align:center ;height: 100%; font-family: inherit; font-size: 0.9rem; font-weight: 600;color: #495057; vertical-align: text-top;'>
+                {{ $teacher->name }}</td>
+            <td
+                style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: text-top;'>
+                {{ $teacher->department->name }}</td>
+            <td
+                style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; vertical-align: text-top;'>
+                <form class="d-inline-block"><a href="{{ route('teacher.edit', $teacher->id) }}"
+                        class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom">Edit</a></form>
+                <form action="{{ route('teacher.delete', $teacher->id) }}" method="POST" class="d-inline-block">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" id="para1" style="background: #e3342f; border-color: #e3342f;"
+                        class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom"
+                        onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                </form>
+            </td>
+        </tr>
+        @endforeach
     </tbody>
 </table>
+
+@if ($teachers->isEmpty())
+<h4 class="text-center">No data in the table</h4>
+@endif
 
 <!-- Modal -->
 <div class="modal fade" id="Modal" tabindex="-1" aria-labelledby="ModalLabel" aria-hidden="true">
@@ -50,7 +65,7 @@
                     <div class="form-group">
                         <label class="col-form-label text-md-right">Name</label>
                         <div class="row">
-                            <input class="form-control mx-3" required name="name"/>
+                            <input class="form-control mx-3" required name="name" />
                         </div>
                         @error('name')
                         <span class="text-danger">{{ $message }}</span>
@@ -78,7 +93,8 @@
                     <div class="form-group">
                         <label class="col-form-label text-md-right">Description</label>
                         <div class="">
-                            <textarea class="form-control" rows="3" id="my-editor" name="description" required></textarea>
+                            <textarea class="form-control" rows="3" id="my-editor" name="description"
+                                required></textarea>
                         </div>
                         @error('description')
                         <span class="text-danger">{{ $message }}</span>

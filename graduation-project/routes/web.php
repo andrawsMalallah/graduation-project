@@ -18,14 +18,14 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
-Route::get('/department/{department}', [DepartmentsController::class, 'show'])->name('department.show');
-Route::get('/department/about/{department}', [DepartmentsController::class, 'about'])->name('department.about');
-Route::get('/department/teachers/{department}', [DepartmentsController::class, 'teachers'])->name('department.teachers');
-Route::get('/department/labs/{department}', [DepartmentsController::class, 'labs'])->name('department.labs');
+Route::get('/department/{department:name}', [DepartmentsController::class, 'show'])->name('department.show');
+Route::get('/department/{department:name}/about', [DepartmentsController::class, 'about'])->name('department.about');
+Route::get('/department/{department:name}/teachers', [DepartmentsController::class, 'teachers'])->name('department.teachers');
+Route::get('/department/{department:name}/labs', [DepartmentsController::class, 'labs'])->name('department.labs');
 
-Route::get('/teacher/{teacher}', [TeachersController::class, 'show'])->name('teacher.show');
+Route::get('/teachers/{teacher:name}', [TeachersController::class, 'show'])->name('teacher.show');
 
-Route::get('/lab/{lab}', [LabsController::class, 'show'])->name('lab.show');
+Route::get('/labs/{lab:name}', [LabsController::class, 'show'])->name('lab.show');
 
 Route::get('/search', [HomeController::class, 'search'])->name('search');
 
@@ -36,9 +36,9 @@ Route::post('/contact/store', [ContactController::class, 'store'])->name('contac
 // blog
 Route::get('/blog', [BlogController::class, 'index'])->name('blog');
 Route::post('/blog/store', [BlogController::class, 'store'])->name('blog.store')->middleware('auth');
-Route::get('/blog/{blog}', [BlogController::class, 'show'])->name('post.show');
+Route::get('/blog/{blog:title}', [BlogController::class, 'show'])->name('post.show');
 
-Route::get('/library/{department_id}', [LibraryController::class, 'index'])->name('library');
+Route::get('/library/{department_name}', [LibraryController::class, 'index'])->name('library');
 
 // dashboard routes
 Route::prefix('dashboard')->middleware('admin')->group(function () {
@@ -75,7 +75,6 @@ Route::prefix('dashboard')->middleware('admin')->group(function () {
     Route::get('/library/image/{library}', [LibraryController::class, 'imageView'])->name('library.image.view');
     Route::patch('/library/update/{library}', [LibraryController::class, 'update'])->name('library.update');
     Route::delete('/library/delete/{library}', [LibraryController::class, 'delete'])->name('library.delete');
-
 
     // blog
     Route::get('/blog', [BlogController::class, 'blogIndex'])->name('dashboard.blog');
