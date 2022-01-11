@@ -7,7 +7,6 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
 :root {
-<<<<<<< HEAD
     --blue: #3490dc;
     --indigo: #6574cd;
     --purple: #9561e2;
@@ -40,36 +39,6 @@
         "Noto Color Emoji";
     --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
         "Liberation Mono", "Courier New", monospace;
-=======
-  --blue: #3490dc;
-  --indigo: #6574cd;
-  --purple: #9561e2;
-  --pink: #f66d9b;
-  --red: #e3342f;
-  --orange: #f6993f;
-  --yellow: #ffed4a;
-  --green: #38c172;
-  --teal: #4dc0b5;
-  --cyan: #6cb2eb;
-  --white: #fff;
-  --gray: #6c757d;
-  --gray-dark: #343a40;
-  --primary: #3490dc;
-  --secondary: #6c757d;
-  --success: #38c172;
-  --info: #6cb2eb;
-  --warning: #ffed4a;
-  --danger: #e3342f;
-  --light: #f8f9fa;
-  --dark: #343a40;
-  --breakpoint-xs: 0;
-  --breakpoint-sm: 576px;
-  --breakpoint-md: 768px;
-  --breakpoint-lg: 992px;
-  --breakpoint-xl: 1200px;
-  --font-family-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
->>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
 }
 
 *,
@@ -79,7 +48,6 @@
 }
 
 html {
-<<<<<<< HEAD
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
         Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
         "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
@@ -99,16 +67,6 @@ main,
 nav,
 section {
     display: block;
-=======
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  line-height: 1.15;
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-
-article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
-  display: block;
->>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
 }
 
 body {
@@ -224,12 +182,7 @@ a {
     background-color: transparent;
 }
 a:hover {
-<<<<<<< HEAD
     color: #1d68a7;
-=======
-  color: #1d68a7;
-  
->>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
 }
 
 a:not([href]):not([class]) {

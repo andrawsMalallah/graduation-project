@@ -11,22 +11,16 @@
 <table class="table table-bordered">
     <thead class="thead-light">
         <tr>
-<<<<<<< HEAD
             <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Book name
             </th>
             <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Department
             </th>
-=======
-            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Book name</th>
-            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Department</th>
->>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
             <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Stage</th>
             <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($books as $book)
-<<<<<<< HEAD
         <tr>
             <td
                 style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: middle;'>
@@ -49,18 +43,6 @@
                         style="background: #e3342f; border-color: #e3342f; vertical-align: text-top;"
                         class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom"
                         onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
-=======
-        <tr >
-            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: middle;' >{{ $book->name }}</td>
-            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: middle;' >{{ $book->department->name }}</td>
-            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: middle;' >{{ $book->stage }}</td>
-            <td style='text-align:center; vertical-align: middle; ;font-family: inherit; font-size: 0.9rem; font-weight: 600;' >
-                <form class="d-inline-block" > <a href="{{ route('library.edit', $book->id) }}"  style="vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom" >Edit</a></form>
-                <form action="{{ route('library.delete', $book->id) }}" method="POST" class="d-inline-block">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" id="para1" style="background: #e3342f; border-color: #e3342f; vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
->>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
                 </form>
             </td>
         </tr>

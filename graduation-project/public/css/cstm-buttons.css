@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .mb-md-0custom,
 .my-md-0custom {
     margin-bottom: 0 !important;
@@ -10,17 +9,6 @@
 }
 
 .btncustom.btn-primarycustom {
-=======
-.mb-md-0custom, .my-md-0custom {
-    margin-bottom: 0!important;
-}
-
-.mb-2custom, .my-2custom {
-    margin-bottom: 0.5rem!important;
-}
-
-    .btncustom.btn-primarycustom {
->>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
     background: #3490dc;
     border-color: #3490dc;
     color: #fff;
@@ -33,7 +21,6 @@
     font-size: 0.9rem;
     font-weight: 500;
     -webkit-box-shadow: 0 10px 20px -6px rgb(0 0 0 / 12%);
-<<<<<<< HEAD
     -moz-box-shadow: 0 10px 20px -6px rgba(0, 0, 0, 0.12);
     box-shadow: 0 10px 20px -6px rgb(0 0 0 / 12%);
     overflow: hidden;
@@ -43,17 +30,6 @@
     -webkit-transition: all 0.3s ease;
     -ms-transition: all 0.3s ease;
     transition: all 0.3s ease;
-=======
-    -moz-box-shadow: 0 10px 20px -6px rgba(0,0,0,.12);
-    box-shadow: 0 10px 20px -6px rgb(0 0 0 / 12%);
-    overflow: hidden;
-    position: relative;
-    -moz-transition: all .3s ease;
-    -o-transition: all .3s ease;
-    -webkit-transition: all .3s ease;
-    -ms-transition: all .3s ease;
-    transition: all .3s ease;
->>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
 }
 .btn-blockcustom {
     display: block;
@@ -80,7 +56,6 @@
     font-size: 0.9rem;
     line-height: 1.5;
     border-radius: 0.25rem;
-<<<<<<< HEAD
     -webkit-transition: color 0.15s ease-in-out,
         background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
         -webkit-box-shadow 0.15s ease-in-out;
@@ -105,21 +80,3 @@
     border-color: #d0211c !important;
     background: #d0211c !important;
 }
-=======
-    -webkit-transition: color .15s ease-in-out , background-color .15s ease-in-out , border-color .15s ease-in-out , -webkit-box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out , background-color .15s ease-in-out , border-color .15s ease-in-out , -webkit-box-shadow .15s ease-in-out;
-    -o-transition: color .15s ease-in-out , background-color .15s ease-in-out , border-color .15s ease-in-out , box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out , background-color .15s ease-in-out , border-color .15s ease-in-out , box-shadow .15s ease-in-out;
-    transition: color .15s ease-in-out , background-color .15s ease-in-out , border-color .15s ease-in-out , box-shadow .15s ease-in-out , -webkit-box-shadow .15s ease-in-out;
-}
-
-.btncustom.btn-primarycustom:hover, .btncustom.btn-primarycustom:focus {
-    border-color: #6cb2eb!important;
-    background: #6cb2eb!important;
-}
-
-#para1:hover {
-    border-color: #d0211c!important;
-    background: #d0211c!important;
-  }
->>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6

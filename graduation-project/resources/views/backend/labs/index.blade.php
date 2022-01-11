@@ -12,19 +12,14 @@
     <thead class="thead-light">
         <tr>
             <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Name</th>
-<<<<<<< HEAD
             <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Department
             </th>
-=======
-            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Department</th>
->>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
             <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($labs as $lab)
         <tr>
-<<<<<<< HEAD
             <td
                 style='text-align:center ;height: 100%; font-family: inherit; font-size: 0.9rem; font-weight: 600;color: #495057; vertical-align: middle;'>
                 {{ $lab->name }}</td>
@@ -43,16 +38,6 @@
                         style="background: #e3342f; border-color: #e3342f; vertical-align: text-top;"
                         class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom"
                         onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
-=======
-            <td style='text-align:center ;height: 100%; font-family: inherit; font-size: 0.9rem; font-weight: 600;color: #495057; vertical-align: middle;'>{{ $lab->name }}</td>
-            <td style='text-align:center ;height: 100%; font-family: inherit; font-size: 0.9rem; font-weight: 600;color: #495057; vertical-align: middle;' >{{ $lab->department->name }}</td>
-            <td style='text-align:center ;height: 100%; font-family: inherit; font-size: 0.9rem; font-weight: 600;color: #495057; vertical-align: middle;' >
-                <form class="d-inline-block"> <a href="{{ route('lab.edit', $lab->id) }}" style="vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom" >Edit</a></form>
-                <form action="{{ route('lab.delete', $lab->id) }}" method="post" class="d-inline-block">
-                    @method('DELETE')
-                    @csrf
-                    <button type="submit" id="para1" style="background: #e3342f; border-color: #e3342f; vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
->>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
                 </form>
             </td>
         </tr>
