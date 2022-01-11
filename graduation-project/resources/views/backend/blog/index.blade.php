@@ -11,23 +11,33 @@
 <table class="table table-bordered">
     <thead class="thead-light">
         <tr>
+<<<<<<< HEAD
             <th style="width: 77%; text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;"
                 scope="col">Title</th>
+=======
+            <th style="width: 77%; text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Title</th>
+>>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
             <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
         @foreach ($posts as $post)
         <tr>
+<<<<<<< HEAD
             <td
                 style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: text-top;'>
                 {{ $post->title }}</td>
             <td
                 style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: text-top;'>
+=======
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: text-top;'>{{ $post->title }}</td>
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: text-top;' >
+>>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
                 @if (!$post->approved)
                 <form action="{{ route('post.approve', $post->id) }}" method="post" class="d-inline-block">
                     @method('PATCH')
                     @csrf
+<<<<<<< HEAD
                     <button style='vertical-align: text-top;'
                         class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom">Approve</button>
                 </form>
@@ -42,7 +52,19 @@
                     <button id="para1" style="background: #e3342f; border-color: #e3342f;vertical-align: text-top;"
                         class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom"
                         onclick="return confirm('Are you sure you want to delete this post?');">Delete</button>
+=======
+                    <button style='vertical-align: text-top;' class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom">Approve</button>
                 </form>
+                @endif
+                <form class="d-inline-block">
+                <a href="{{ route('post.edit', $post->id) }}" style="vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom">Edit</a></form>
+                <form action="{{ route('post.delete', $post->id) }}" method="post" class="d-inline-block">
+                    @method('DELETE')
+                    @csrf
+                    <button  id="para1" style="background: #e3342f; border-color: #e3342f;vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom" onclick="return confirm('Are you sure you want to delete this item?');" >Delete</button>
+>>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
+                </form>
+               
             </td>
         </tr>
         @endforeach

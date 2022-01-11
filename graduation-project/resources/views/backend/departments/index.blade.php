@@ -11,8 +11,12 @@
 <table class="table table-bordered">
     <thead class="thead-light">
         <tr>
+<<<<<<< HEAD
             <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Department
                 Name</th>
+=======
+            <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Department Name</th>
+>>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
             <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Type</th>
             <th style="text-align:center ;font-size: 0.95rem; font-weight: 600; color: #212529;" scope="col">Action</th>
         </tr>
@@ -20,6 +24,7 @@
     <tbody>
         @foreach ($departments as $department)
         <tr>
+<<<<<<< HEAD
             <td
                 style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: text-top;'>
                 {{ $department->name }}</td>
@@ -31,13 +36,23 @@
                 <form class="d-inline-block"> <a href="{{ route('department.edit', $department->id) }}"
                         style="vertical-align: text-top;"
                         class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom">Edit</a></form>
+=======
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: text-top;' >{{ $department->name }}</td>
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: text-top;' >{{ $department->type }}</td>
+            <td style='text-align:center ;font-family: inherit; font-size: 0.9rem; font-weight: 600; color:#495057; vertical-align: text-top;' >
+                <form class="d-inline-block"> <a href="{{ route('department.edit', $department->id) }}" style="vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom">Edit</a></form>
+>>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
 
                 <form action="{{ route('department.delete', $department->id) }}" method="post" class="d-inline-block">
                     @method('DELETE')
                     @csrf
+<<<<<<< HEAD
                     <button id="para1" style="background: #e3342f; border-color: #e3342f;vertical-align: text-top;"
                         class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom"
                         onclick="return confirm('Are you sure you want to delete {{ $department->name }}?');">Delete</button>
+=======
+                    <button id="para1" style="background: #e3342f; border-color: #e3342f;vertical-align: text-top;" class="btncustom mb-2custom mb-md-0custom btn-primarycustom btn-blockcustom" onclick="return confirm('Are you sure you want to delete {{ $department->name }}?');">Delete</button>
+>>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
                 </form>
             </td>
         </tr>
@@ -75,7 +90,11 @@
                     <select class="custom-select" name="type" required>
                         <option selected disabled>Select The Type</option>
                         <option value="scientific">Scientific</option>
+<<<<<<< HEAD
                         <option value="management">Management</option>
+=======
+                        <option value="Management">Management</option>
+>>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
                     </select>
                     @error('type')
                     <span class="text-danger">{{ $message }}</span>

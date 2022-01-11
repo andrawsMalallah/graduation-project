@@ -22,7 +22,11 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/style-navbar.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/ionicon-navbar.min.css') }}">
         <link rel="stylesheet" type="text/css" href="{{ asset('css/cstm-buttons.css') }}">
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
         <link rel="stylesheet" type="text/css"
