@@ -47,9 +47,7 @@
         </div>
         @endif
         @endforeach
+        {{ $posts->links() }}
     </div>
 </section>
-@endsection
-
-@section('script')
 @endsection

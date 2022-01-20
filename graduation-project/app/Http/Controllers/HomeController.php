@@ -20,8 +20,9 @@ class HomeController extends Controller
     {
         $sliders = Blog::where('approved', 1)->orderBy('created_at', 'DESC')->limit(3)->get();
         $departments = Department::where('type', 'scientific')->get(['id', 'image', 'name']);
+        $units = Department::where('type', 'management')->orderBy('name', 'ASC')->get(['id', 'name', 'description', 'image']);
 
-        return view('frontend.welcome', compact('sliders', 'departments'));
+        return view('frontend.welcome', compact('sliders', 'departments', 'units'));
     }
 
     /**

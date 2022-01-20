@@ -99,19 +99,4 @@ class DepartmentsController extends Controller
 
         return view('frontend.department.index', compact('department'));
     }
-
-    public function about(Department $department)
-    {
-        return view('frontend.department.about', compact('department'));
-    }
-
-    public function teachers(Department $department)
-    {
-        return view('frontend.department.teachers', compact('department'));
-    }
-
-    public function labs(Department $department)
-    {
-        return view('frontend.department.labs', compact('department'));
-    }
 }

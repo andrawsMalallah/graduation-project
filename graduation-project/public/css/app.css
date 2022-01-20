@@ -4950,18 +4950,20 @@ input[type="button"].btn-block {
     display: flex;
     padding-left: 0;
     list-style: none;
+    margin-bottom: 40px;
     border-radius: 0.25rem;
 }
 
 .page-link {
     position: relative;
-    display: block;
-    padding: 0.5rem 0.75rem;
-    margin-left: -1px;
+    padding: 10px 14px;
+    margin: 0 2px;
     line-height: 1.25;
     color: #3490dc;
     background-color: #fff;
     border: 1px solid #dee2e6;
+    border-radius: 50%;
+    font-weight: bolder;
 }
 .page-link:hover {
     z-index: 2;
@@ -4977,13 +4979,10 @@ input[type="button"].btn-block {
 }
 
 .page-item:first-child .page-link {
-    margin-left: 0;
-    border-top-left-radius: 0.25rem;
-    border-bottom-left-radius: 0.25rem;
+    border-radius: 50%;
 }
 .page-item:last-child .page-link {
-    border-top-right-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
+     border-radius: 50%;
 }
 .page-item.active .page-link {
     z-index: 3;
@@ -5005,12 +5004,10 @@ input[type="button"].btn-block {
     line-height: 1.5;
 }
 .pagination-lg .page-item:first-child .page-link {
-    border-top-left-radius: 0.3rem;
-    border-bottom-left-radius: 0.3rem;
+     border-radius: 50%;
 }
 .pagination-lg .page-item:last-child .page-link {
-    border-top-right-radius: 0.3rem;
-    border-bottom-right-radius: 0.3rem;
+     border-radius: 50%;
 }
 
 .pagination-sm .page-link {
@@ -5019,12 +5016,10 @@ input[type="button"].btn-block {
     line-height: 1.5;
 }
 .pagination-sm .page-item:first-child .page-link {
-    border-top-left-radius: 0.2rem;
-    border-bottom-left-radius: 0.2rem;
+     border-radius: 50%;
 }
 .pagination-sm .page-item:last-child .page-link {
-    border-top-right-radius: 0.2rem;
-    border-bottom-right-radius: 0.2rem;
+     border-radius: 50%;
 }
 
 .badge {
@@ -10453,18 +10448,11 @@ a.text-dark:focus {
     }
 }
 * {
-<<<<<<< HEAD
     margin: 0;
     padding: 0;
     font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
         Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
         "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-=======
-  margin: 0;
-  padding: 0;
-  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"
-;
->>>>>>> 67a4fcfb7e46e3cf9d55edc4e47bee538bb942e6
 }
 
 body,
@@ -10490,7 +10478,7 @@ p {
 }
 
 .carousel-img {
-    height: 500px;
+    height: 600px;
     -o-object-fit: cover;
     object-fit: cover;
 }

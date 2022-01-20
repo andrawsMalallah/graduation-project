@@ -19,9 +19,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/about', [HomeController::class, 'about'])->name('about');
 
 Route::get('/department/{department:name}', [DepartmentsController::class, 'show'])->name('department.show');
-Route::get('/department/{department:name}/about', [DepartmentsController::class, 'about'])->name('department.about');
-Route::get('/department/{department:name}/teachers', [DepartmentsController::class, 'teachers'])->name('department.teachers');
-Route::get('/department/{department:name}/labs', [DepartmentsController::class, 'labs'])->name('department.labs');
 
 Route::get('/teachers/{teacher:name}', [TeachersController::class, 'show'])->name('teacher.show');
 

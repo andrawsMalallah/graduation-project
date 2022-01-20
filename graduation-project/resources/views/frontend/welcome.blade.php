@@ -1,10 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-@php
-$units = App\Models\Department::where('type', 'management')->orderBy('name', 'ASC')->get(['id', 'name', 'description']);
-@endphp
 <style>
     @import url("https://fonts.googleapis.com/css2?family=Baloo+2&display=swap");
 /* This pen */
@@ -288,12 +284,11 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
         @foreach ($sliders as $index => $slider)
 
         <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
-            <img style="height: 600px" src="{{ asset($slider->image) }}" class="d-block carousel-img w-100" alt="...">
+            <img src="{{ asset($slider->image) }}" class="d-block carousel-img w-100" alt="...">
             <div class="carousel-caption d-md-block">
                 <a href="{{ route('post.show', $slider->title) }}" target="_blank"
                     class="text-white text-decoration-none">
                     <h4 class="carousel-title">{{ $slider->title }}</h4>
-                    <p>...</p>
                 </a>
             </div>
         </div>
@@ -313,7 +308,7 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
 <section class="py-4">
     <div class="container">
     <div class="h1 text-center text-dark" id="pageHeaderTitle">SCIENTIFIC DEPARTMENTS</div>
-        <div class="underline mb-1"></div>
+        <div class="underline"></div>
 
         <div class="my-4 d-flex flex-wrap">
             @foreach ($departments as $department)
@@ -330,42 +325,25 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
     </div>
 </section>
 
-<!-- <section class="py-4">
-    <div class="container">
-        <h2 class="text-center">Center & Units</h2>
-        <div class="underline"></div>
-
-        <div class="my-4 d-flex flex-wrap">
-        @foreach ($units as $unitx)
-            <a class=" text-dark text-decoration-none mx-auto" href="{{ route('department.show', $unitx->name) }}">
-                <div class="card border-0 m-4 department shadow">
-                    <img src="{{ asset($unitx->image) }}" class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h6 class="card-title text-capitalize" style="font-size: 1rem">{{ $unitx->name }}</h6>
-                    </div>
-                </div>
-            </a>
-            @endforeach
-        </div>
-    </div>
-</section> -->
 <section class="light">
 	<div class="container py-2">
 		<div class="h1 text-center text-dark" id="pageHeaderTitle">CENTERS & UNITS</div><div class="underline mb-2"></div>
-        @foreach ($units as $unitx)
+        @foreach ($units as $unit)
 		<article class="my-4 postcard light blue">
-			<a class="postcard__img_link" href="{{ route('department.show', $unitx->name) }}">
+			<a class="postcard__img_link" href="{{ route('department.show', $unit->name) }}">
 				<img class="postcard__img" src="https://picsum.photos/100{{rand(1,9)}}/100{{rand(1,9)}}" alt="Image Title" />
+				{{-- <img class="postcard__img" src="{{ asset($unit->image) }}" alt="Image Title" /> --}}
+
 			</a>
 			<div class="postcard__text t-dark">
-				<h1 class="postcard__title blue"><a href="{{ route('department.show', $unitx->name) }}">{{ $unitx->name }}</a></h1>
+				<h1 class="postcard__title blue"><a href="{{ route('department.show', $unit->name) }}">{{ $unit->name }}</a></h1>
 				<div class="postcard__subtitle small">
 				</div>
 				<div class="postcard__bar"></div>
-				<div class="postcard__preview-txt">{{ strip_tags(\Str::limit($unitx->description, 280)) }}</div>
+				<div class="postcard__preview-txt">{{ strip_tags(\Str::limit($unit->description, 280)) }}</div>
 				<ul class="postcard__tagbox">
 					<li class="tag__item play blue">
-						<a href="{{ route('department.show', $unitx->name) }}"><i style="text-align:center;" class="fas fa-play mr-2"></i>More Information ...</a>
+						<a href="{{ route('department.show', $unit->name) }}"><i style="text-align:center;" class="fas fa-play mr-2"></i>More Information ...</a>
 					</li>
 				</ul>
 			</div>
@@ -373,7 +351,7 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
         @endforeach
 	</div>
 </section>
-<section class="container mb-3">
+<section class="container py-5">
     <div class="map">
         <div class="h1 text-center text-dark" id="pageHeaderTitle">Geographical Location</div>
         <div class="underline mb-2"></div>
