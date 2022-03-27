@@ -50,7 +50,9 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
     </head>
 
     <body>
-        
+        <!-- userway 3rd party -->
+        <script>(function(d){var s = d.createElement("script");s.setAttribute("data-account", "VzizBb3ep2");s.setAttribute("src", "https://cdn.userway.org/widget.js");(d.body || d.head).appendChild(s);})(document)</script><noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website accessibility</a></noscript>    
+        <!-- userway 3rd party -->
     <button class="scrollToTopBtn showBtn">▲</button>
         <div id="app">
 
