@@ -18,7 +18,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $sliders = Blog::where('approved', 1)->orderBy('created_at', 'DESC')->limit(3)->get();
+        $sliders = Blog::where('approved', 1)->orderBy('created_at', 'DESC')->limit(10)->get();
         $departments = Department::where('type', 'scientific')->get(['id', 'image', 'name']);
         $units = Department::where('type', 'management')->orderBy('name', 'ASC')->get(['id', 'name', 'description', 'image']);
 
