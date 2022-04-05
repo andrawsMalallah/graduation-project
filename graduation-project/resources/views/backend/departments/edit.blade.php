@@ -31,8 +31,13 @@
             @enderror
         </div>
 
+        <label class="col-form-label text-md-right">Video</label>
+        <div class="row">
+            <input class="form-control mx-3 mb-3" name="video" value="{{ $department->video }}" />
+        </div>
+
         <label class="col-form-label text-md-right">Image</label>
-        <div class="input-group mb-3">
+        <div class="input-group">
             <div class="custom-file">
                 <input type="file" class="custom-file-input" name="image" id="validatedInputGroupCustomFile">
                 <label class="custom-file-label" for="validatedInputGroupCustomFile">Change Image</label>
@@ -47,12 +52,7 @@
         <span class="text-danger">{{ $message }}</span>
         @enderror
 
-        <label class="col-form-label text-md-right">Video</label>
-        <div class="row">
-            <input class="form-control mx-3 mb-3" name="video" value="{{ $department->video }}" />
-        </div>
-
-        <div class="form-group">
+        <div class="form-group mt-3">
             <label class="col-form-label text-md-right">Description</label>
             <div class="">
                 <textarea class="form-control" id="my-editor" name="description"

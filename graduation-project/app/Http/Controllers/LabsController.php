@@ -22,6 +22,9 @@ class LabsController extends Controller
             'name' => 'required',
             'department' => 'required',
             'description' => 'required',
+            'image' => 'image|max:2048',
+        ], [
+            'image.image' => 'The image must be a file of type: jpeg, png, bmp, gif, or svg.',
         ]);
 
         $lab = new Lab;
@@ -56,6 +59,9 @@ class LabsController extends Controller
             'name' => 'required',
             'department' => 'required',
             'description' => 'required',
+            'image' => 'image|max:2048',
+        ], [
+            'image.image' => 'The image must be a file of type: jpeg, png, bmp, gif, or svg.',
         ]);
 
         $lab->name = $request->name;

@@ -17,7 +17,7 @@
         </div>
 
         <label class="col-form-label text-md-right">Image</label>
-        <div class="input-group mb-3">
+        <div class="input-group">
             <div class="custom-file">
                 <input type="file" class="custom-file-input" name="image" id="validatedInputGroupCustomFile">
                 <label class="custom-file-label" for="validatedInputGroupCustomFile">Change Image</label>
@@ -28,8 +28,11 @@
                     class="btn btn-outline-secondary rounded ml-2" type="button">View</a>
             </div>
         </div>
+        @error('image')
+        <span class="text-danger">{{ $message }}</span>
+        @enderror
 
-        <div class="form-group">
+        <div class="form-group mt-3">
             <label class="col-form-label text-md-right">Description</label>
             <div class="">
                 <textarea class="form-control" id="my-editor" name="description"

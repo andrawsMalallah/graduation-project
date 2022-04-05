@@ -20,8 +20,10 @@ class DepartmentsController extends Controller
         $request->validate([
             'name' => 'required',
             'type' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|max:2048',
             'description' => 'required',
+        ],[
+            'image.image' => 'The image must be a file of type: jpeg, png, bmp, gif, or svg.',
         ]);
 
         $imgName = $request->file('image')->getClientOriginalName();
@@ -53,6 +55,9 @@ class DepartmentsController extends Controller
             'name' => 'required',
             'type' => 'required',
             'description' => 'required',
+            'image' => 'image|max:2048',
+        ], [
+            'image.image' => 'The image must be a file of type: jpeg, png, bmp, gif, or svg.',
         ]);
 
         $department->name = $request->name;

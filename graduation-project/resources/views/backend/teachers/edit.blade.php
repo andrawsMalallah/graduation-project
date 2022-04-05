@@ -42,12 +42,15 @@
                 </div>
                 
                 <label class="col-form-label text-md-right">Image</label>
-                <div class="input-group mb-3">
+                <div class="input-group">
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" name="image" id="validatedInputGroupCustomFile">
                         <label class="custom-file-label" for="validatedInputGroupCustomFile">Change Image</label>
                     </div>
                 </div>
+                @error('image')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
             
         </div>

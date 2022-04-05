@@ -31,7 +31,9 @@ class LibraryController extends Controller
             'department' => 'required',
             'stage' => 'required',
             'link' => 'required|url',
-            'image' => 'required'
+            'image' => 'required|image|max:2048',
+        ], [
+            'image.image' => 'The image must be a file of type: jpeg, png, bmp, gif, or svg.',
         ]);
 
         $imgName = $request->file('image')->getClientOriginalName();
@@ -65,6 +67,9 @@ class LibraryController extends Controller
             'department' => 'required',
             'stage' => 'required',
             'link' => 'required',
+            'image' => 'image|max:2048',
+        ], [
+            'image.image' => 'The image must be a file of type: jpeg, png, bmp, gif, or svg.',
         ]);
 
         $library->name = $request->name;

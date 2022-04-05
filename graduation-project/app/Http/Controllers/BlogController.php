@@ -18,8 +18,10 @@ class BlogController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'image' => 'required',
+            'image' => 'required|image|max:2048',
             'description' => 'required'
+        ],[
+            'image.image' => 'The image must be a file of type: jpeg, png, bmp, gif, or svg.',
         ]);
 
 
@@ -67,6 +69,9 @@ class BlogController extends Controller
         $request->validate([
             'description' => 'required',
             'title' => 'required',
+            'image' => 'image|max:2048'
+        ], [
+            'image.image' => 'The image must be a file of type: jpeg, png, bmp, gif, or svg.',
         ]);
 
         $blog->title = $request->title;

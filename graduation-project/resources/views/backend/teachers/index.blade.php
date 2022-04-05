@@ -82,15 +82,18 @@
                     <span class="text-danger">{{ $message }}</span>
                     @enderror
 
-                    <div class="input-group my-3">
+                    <div class="input-group mt-3">
                         <div class="custom-file">
                             <input type="file" class="custom-file-input" id="inputGroupFile01"
                                 aria-describedby="inputGroupFileAddon01" name="image">
                             <label class="custom-file-label" for="inputGroupFile01">Choose Image</label>
                         </div>
                     </div>
+                    @error('image')
+                    <span class="text-danger">{{ $message }}</span>
+                    @enderror
 
-                    <div class="form-group">
+                    <div class="form-group mt-3">
                         <label class="col-form-label text-md-right">Description</label>
                         <div class="">
                             <textarea class="form-control" rows="3" id="my-editor" name="description"
