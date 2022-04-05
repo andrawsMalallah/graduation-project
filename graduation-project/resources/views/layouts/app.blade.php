@@ -206,12 +206,7 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
         </div>
         
         <div class="col-lg-4 col-md-6 mb-lg-0">
-<<<<<<< HEAD
-
         <!-- Newsletter begining : Using Mailchimp -->
-=======
-          <!-- Newsletter begining : Using Mailchimp -->
->>>>>>> 7c11034f9384bdabbbd91381972365517795efbb
         <form action="{{ env('MAILCHIMP_ENDPOINT') }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" onsubmit='alert("Thank you for subscribing!")' novalidate>
           <h6 class="text-uppercase font-weight-bold mb-4">Newsletter</h6>
           <p class="text-muted mb-4">Register to our newsletter to receive latest college updates.</p>
@@ -229,11 +224,6 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
     </div></form>
     <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
     <!-- Newsletter begining : Using Mailchimp -->
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> 7c11034f9384bdabbbd91381972365517795efbb
     <!-- Copyrights -->
     <div class="bg-light py-4">
       <div class="container text-center">
