@@ -312,7 +312,11 @@
 
         <div class="my-4 d-flex flex-wrap">
             @foreach ($departments as $department)
+<<<<<<< HEAD
             <a style="border-radius: 10px" class="text-dark text-decoration-none mx-auto" href="{{ route('department.show', $department->name) }}">
+=======
+            <a style="border-radius: 10px" class=" text-dark text-decoration-none mx-auto " href="{{ route('department.show', $department->name) }}">
+>>>>>>> 7c11034f9384bdabbbd91381972365517795efbb
                 <div style="border-radius: 10px" class="card border-0 m-4 department shadow">
                     <img style="border-radius: 10px" src="{{ asset($department->image) }}" class="card-img-top" alt="...">
                     <div class="card-body">
