@@ -10,7 +10,8 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
+    
+        <link rel="icon" href="{{ url('images/favicon.ico') }}">
 
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -50,7 +51,9 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
     </head>
 
     <body>
-        
+        <!-- userway 3rd party -->
+        <script>(function(d){var s = d.createElement("script");s.setAttribute("data-account", "VzizBb3ep2");s.setAttribute("src", "https://cdn.userway.org/widget.js");(d.body || d.head).appendChild(s);})(document)</script><noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website accessibility</a></noscript>    
+        <!-- userway 3rd party -->
     <button class="scrollToTopBtn showBtn">▲</button>
         <div id="app">
 
@@ -203,20 +206,26 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
         </div>
         
         <div class="col-lg-4 col-md-6 mb-lg-0">
+
+        <!-- Newsletter begining : Using Mailchimp -->
+        <form action="{{ env('MAILCHIMP_ENDPOINT') }}" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" onsubmit='alert("Thank you for subscribing!")' novalidate>
           <h6 class="text-uppercase font-weight-bold mb-4">Newsletter</h6>
           <p class="text-muted mb-4">Register to our newsletter to receive latest college updates.</p>
           <div class="p-1 rounded border">
             <div class="input-group">
-              <input type="email" placeholder="Enter your email address" aria-describedby="button-addon1" class="form-control border-0 shadow-0">
+            <div aria-hidden="true"><input type="hidden" name="{{ env('MAILCHIMP_BOT_HASH') }}" tabindex="-1" value=""></div>
+              <input type="email" placeholder="Enter your email address" aria-describedby="mc-embedded-subscribe" id="mce-EMAIL" name="EMAIL" class="form-control border-0 shadow-0">
               <div class="input-group-append">
-                <button id="button-addon1" type="submit" class="btn btn-link"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA5ElEQVRIie3UMUpDQRSF4Y/EKoW9RbKGgOIeFMQdWGYLKZMyW7DVxlJwEzbBNZiAvYVd5KWZwUfy3jDGN5DCAweGuXfOP9yB4V/HpGusUf3Ra1w1AboIj141AWLxBaMDJnCGh1pOK6DCF6boZwT3MMHnTkYr4AbvYf2Gy0T4GK+h9wN3OQAYYIENvnGP01pvqp4FiDrH0s/D3Qavwt4SFxk5yULTjFNv9GtA1BDPwcNE39OhgFz18VgSACclAYu2QleAqg3SJaARkvvZ7QalPO/VDkwC5OgVbz8rCSgWDvOS4XvaAvK3ibqWjeW0AAAAAElFTkSuQmCC"/></button>
+                <button id="mc-embedded-subscribe" name="subscribe" type="submit" class="btn btn-link"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAABmJLR0QA/wD/AP+gvaeTAAAA5ElEQVRIie3UMUpDQRSF4Y/EKoW9RbKGgOIeFMQdWGYLKZMyW7DVxlJwEzbBNZiAvYVd5KWZwUfy3jDGN5DCAweGuXfOP9yB4V/HpGusUf3Ra1w1AboIj141AWLxBaMDJnCGh1pOK6DCF6boZwT3MMHnTkYr4AbvYf2Gy0T4GK+h9wN3OQAYYIENvnGP01pvqp4FiDrH0s/D3Qavwt4SFxk5yULTjFNv9GtA1BDPwcNE39OhgFz18VgSACclAYu2QleAqg3SJaARkvvZ7QalPO/VDkwC5OgVbz8rCSgWDvOS4XvaAvK3ibqWjeW0AAAAAElFTkSuQmCC"/></button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-
+    </div></form>
+    <script type='text/javascript' src='//s3.amazonaws.com/downloads.mailchimp.com/js/mc-validate.js'></script><script type='text/javascript'>(function($) {window.fnames = new Array(); window.ftypes = new Array();fnames[0]='EMAIL';ftypes[0]='email';fnames[1]='FNAME';ftypes[1]='text';fnames[2]='LNAME';ftypes[2]='text';fnames[3]='ADDRESS';ftypes[3]='address';fnames[4]='PHONE';ftypes[4]='phone';fnames[5]='BIRTHDAY';ftypes[5]='birthday';}(jQuery));var $mcj = jQuery.noConflict(true);</script>
+    <!-- Newsletter begining : Using Mailchimp -->
+    
     <!-- Copyrights -->
     <div class="bg-light py-4">
       <div class="container text-center">
@@ -271,7 +280,7 @@ $units = App\Models\Department::where('type', 'management')->orderBy('name', 'AS
                 </div>
             </div>
         </div>
-
+        
         <script src="/ckeditor/ckeditor.js"></script>
         <script>
             if (document.getElementById('my-editor')) {

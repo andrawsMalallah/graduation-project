@@ -312,9 +312,9 @@
 
         <div class="my-4 d-flex flex-wrap">
             @foreach ($departments as $department)
-            <a class=" text-dark text-decoration-none mx-auto " href="{{ route('department.show', $department->name) }}">
-                <div class="card border-0 m-4 department shadow">
-                    <img src="{{ asset($department->image) }}" class="card-img-top" alt="...">
+            <a style="border-radius: 10px" class="text-dark text-decoration-none mx-auto" href="{{ route('department.show', $department->name) }}">
+                <div style="border-radius: 10px" class="card border-0 m-4 department shadow">
+                    <img style="border-radius: 10px" src="{{ asset($department->image) }}" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h6 class="card-title text-capitalize" style="font-size: 1rem">{{ $department->name }}</h6>
                     </div>
@@ -330,8 +330,8 @@
 		<div class="h1 text-center text-dark" id="pageHeaderTitle">CENTERS & UNITS</div><div class="underline mb-2"></div>
         @foreach ($units as $unit)
 		<article class="my-4 postcard light blue">
-			<a class="postcard__img_link" href="{{ route('department.show', $unit->name) }}">
-				<img class="postcard__img" src="https://picsum.photos/100{{rand(1,9)}}/100{{rand(1,9)}}" alt="Image Title" />
+			<a style="border-radius: 10px" class="postcard__img_link" href="{{ route('department.show', $unit->name) }}">
+				<!-- <img class="postcard__img" src="https://picsum.photos/100{{rand(1,9)}}/100{{rand(1,9)}}" alt="Image Title" />-->
 				{{-- <img class="postcard__img" src="{{ asset($unit->image) }}" alt="Image Title" /> --}}
 
 			</a>

@@ -10,8 +10,7 @@
 
         <title>{{ config('app.name', 'Electrical Engineering Technical College') }}</title>
 
-        <link rel="shortcut icon" href="{{ asset('images/favicon.png') }}" type="image/x-icon">
-
+        <link rel="icon" href="{{ url('images/favicon.ico') }}">
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -42,6 +41,9 @@
     </head>
 
     <body>
+          <!-- userway 3rd party -->
+          <script>(function(d){var s = d.createElement("script");s.setAttribute("data-account", "VzizBb3ep2");s.setAttribute("src", "https://cdn.userway.org/widget.js");(d.body || d.head).appendChild(s);})(document)</script><noscript>Please ensure Javascript is enabled for purposes of <a href="https://userway.org">website accessibility</a></noscript>    
+        <!-- userway 3rd party -->
         <div id="app">
 
             <!-- Section: Header -->
@@ -142,6 +144,7 @@
         </script>
 
         @yield('script')
+        
     </body>
 
 </html>
